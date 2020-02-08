@@ -1,7 +1,6 @@
 import spacy
 import string
 
-
 import pandas as pd
 import numpy as np
 import nltk
@@ -44,8 +43,6 @@ def normalize_corpus(text):
     normalize_text = lemmatize_text(normalize_text)
     return normalize_text
 
-    return normalized_corpus
-
 def remove_stopwords(text):
     stopword_list = stopwords.words('french')
     tokens = word_tokenize(text)
@@ -57,8 +54,6 @@ def remove_stopwords(text):
 normalize_text = normalize_corpus(text)
 final_text = remove_stopwords(normalize_text)
 print(final_text)
-print(token(final_text))
-
 
 #print(remove_stopwords("The, and, if are stopwords, computer is not"))
 #print(normalize_corpus(text))
