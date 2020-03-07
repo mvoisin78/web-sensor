@@ -15,8 +15,9 @@ import dateutil.parser as dparser
 
 nlp = spacy.load("fr_core_news_sm", parse=True, tag=True, entity=True)
 
-text = u'Super le Match de Foot du 15 mars à 18h au Stade de France et Tremblement de Terre, Concert de Musique et mangez vos grand morts :) :3'
+#text = u'Super le Match de Foot du 15 mars à 18h au Stade de France et Tremblement de Terre, Concert de Musique et mangez vos grand morts :) :3'
 #text = u'Tous les films de Ghibli chez Netflix'
+text = u'Sport = FootBall, Athlétisme, basketball, natation, cyclisme, golf, handball, equitation, judo, karate, marathon, rugby, ski, taekwondo, volleyball, superbowl, formule Type = Match, coupe, championnat, Attentat, Tremblement, Concert, Exposition, Explosion, Festival, terroriste, election, fête, cirque, gala, oscar, cesar, congrès, forum, ceremonie, convention, spectacle, théâtre, politique, trianon, vote, election, accident, mort, sortie, album, cinema, film, coronavirus, virus, maladie, épidémie, pandémie,  nouveau, soldes, carnaval, tsunami, avant-premiere, defile, musique, show, comedie, humour, stand-up, ligue, onemanshow, opera, evenement, event, manifestation, vernissage, oeuvre, game, fashion, foire, Lieu = France, Europe, Monde, National, Regionnal, Zenith, Olympia, Bataclan, Hippodrome, cinema, theatre, Arena, trianon, musee, villette, opera, casino, '
 
 def token(sentence): #Tokenize et retourne les labels
     doc = nlp(sentence)
@@ -53,7 +54,7 @@ def remove_stopwords(text):
 
 normalize_text = normalize_corpus(text)
 final_text = remove_stopwords(normalize_text)
-print(final_text)
+print(final_text.lower())
 
 #print(remove_stopwords("The, and, if are stopwords, computer is not"))
 #print(normalize_corpus(text))

@@ -67,12 +67,12 @@ def create_vector(features,tokens):
         
 
 #on lemmatize les features pr la proprete
-features = "sport foot stade football athletisme basketball natation cyclisme golf handball equitation judo karate marathon rugby ski taekwondo volleyball superbowl match coupe championnat attentat tremblement concert exposition explosion festival terroriste election fete cirque gala oscar cesar congre forum ceremoni convention spectacle theatr politique trianon vote election accident mort sortie album cinema film coronaviru viru maladie epidemie pandemie nouveau solde carnaval france europe monde national regionnal zenith olympia bataclan hippodrome cinema"
+features = "sport football athletisme basketball natation cyclisme golf handball equitation judo karate marathon rugby ski taekwondo volleyball superbowl formule type match coupe championnat attentat tremblement concert exposition explosion festival terroriste election fete cirque gala oscar cesar congre forum ceremoni convention spectacle theatr politique trianon vote election accident mort sortie album cinema film coronaviru viru maladie epidemie pandemie nouveau solde carnaval tsunami avantpremiere defile musiqu show comedie humour standup ligue onemanshow opera evenemer event manifestation vernissage oeuvre game fashion foir lieu france europe monde national regionnal zenith olympia bataclan hippodrome cinemer theatr arena trianon musee villette oper casino"
 f = lemmatize_text(features).split(" ")
 
 #test API pour la localisation mais osef
 
-places = GeoText("text")
+places = GeoText("test")
 print(places.cities)
 
 
