@@ -1,5 +1,6 @@
 import spacy
 import string
+import time
 from geotext import GeoText
 
 import pandas as pd
@@ -16,7 +17,7 @@ import dateutil.parser as dparser
 from pymongo import MongoClient
 # pprint library is used to make the output look more pretty
 from pprint import pprint
-
+from dbconn import *
 
 
 nlp = spacy.load("fr_core_news_sm", parse=True, tag=True, entity=True)
@@ -79,26 +80,33 @@ print(places.cities)
 #Changer pour vous
 #connect to MongoDB, change the << MONGODB URL >> to reflect your own connection string
 client = MongoClient("mongodb+srv://martin:Hp6ZTa7@tweets-yzhnw.mongodb.net/test?retryWrites=true&w=majority")
+
 db=client.admin
 mydb = client["tweetest"]
 mycol = mydb["tweets"]
 i = 0
 vecteur_count = 0
+
+## ATTENTION ##
+deleteAllVectors()
+##           ##
+
 for t in mycol.find({}):
     
     normalize_text = normalize_corpus(t.get('text'))
     
     final_text = remove_stopwords(normalize_text)
-    print(final_text)
+    #print(final_text)
 
     #creation du vecteur
     v = create_vector(f,final_text.split(" "))
-    print(v)
+    #print(v)
 
-##################################DEBUG#################################
+##################################DEBUG AND INSER###########################################################################
     #c est juste pour voir si ya des vecteurs avec des 1 => oui
-    if sum(v) >=3 :
+    if sum(v) >=1 :
+        insert_vector(v,t.get('text'),t.get('tweet_id'),t.get('date'))
         vecteur_count +=1
     i+=1
-    print("nb possibles Event : ",vecteur_count, "/", i)
+    print("nb possibles Event : ",vecteur_count, "/", i,time.perf_counter())
 
