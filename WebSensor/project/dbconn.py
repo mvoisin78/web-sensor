@@ -179,13 +179,14 @@ def selectVectors():
 
         conn.commit()
         vectors_records = cur.fetchall() 
-   
+        """
         print("Print each row and it's columns values")
         for row in vectors_records:
             print("Id = ", row[0], "\n")
-            
+        """            
         # Close communication with the PostgreSQL database
         cur.close()
+        return vectors_records
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
     finally:
