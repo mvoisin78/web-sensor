@@ -34,18 +34,16 @@ def remove_special_characters(text, remove_digits=False):
 
 def lemmatize_text(text):
     text = nlp(text)
-    for token in text:
-        print(token,token.lemma_)
     text = ' '.join([word.lemma_ if word.lemma_ != '-PRON-' else word.text for word in text])
     return text
 
 
 def normalize_corpus(text):
-    normalize_text = lemmatize_text(text)
+    text = text.lower()
+    normalize_text = remove_stopwords(text)
+    normalize_text = lemmatize_text(normalize_text)
     normalize_text = remove_accented_chars(normalize_text)
     normalize_text = remove_special_characters(normalize_text)
-    normalize_text = lemmatize_text(normalize_text)
-    normalize_text = remove_stopwords(normalize_text)
     return normalize_text
 
 def remove_stopwords(text):
