@@ -10,40 +10,42 @@ session_start();
   	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/style2.css">  
+    <link rel="stylesheet" type="text/css" href="css/style2.css">
+	
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="data_charts.js" type="text/javascript"></script>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
 
-      <style type="text/css">
+    <style type="text/css">
         html { height: 100% }
         body { height: 100%; margin: 3; padding: 3}
         #container { width: 100%}
-    .line {
-      fill: none;
-      stroke: steelblue;
-      stroke-width: 2px;
-    }
-
+		.line {
+			fill: none;
+			stroke: steelblue;
+			stroke-width: 2px;
+			}
     </style>
 
 </head>
 
 <body>
-
+<!-- Header -->
 <?php
-  require ('include/header.inc.php');
-    headWeb("Index","Gestion de l'apprentissage","home","index");
-  /*$connexion = new PDO('pgsql:host=postgresql-websensor.alwaysdata.net;port=5432;dbname=websensor_2019;user=websensor;password=projet2019');
-  $resultset = $connexion->prepare("SELECT * FROM vectors");
-  $resultset->execute();
-  $count = $resultset->rowCount();
-  while ($row = $resultset->fetch(PDO::FETCH_ASSOC)) {
-    print(strval($row["vector"]));
-    print(strval($row["tweet_content"]));
-    print(strval($row["id_tweet"]));
-    print(strval($row["date"]));
-  }
-  print($count);
-  */
+	require ('include/header.inc.php');
+	headWeb("Index","Gestion de l'apprentissage","home","index");
 ?>
+
+<!-- Content -->
+
+<!-- Test de la requête : sql_request -> data_charts -> index.php -->
+<script type="text/javascript">
+	dataTestSQL = getDataForGraphics("lineChart");
+
+	for (var obj in dataTestSQL) {
+		alert(dataTestSQL[obj].label);
+	}
+</script>
 
 <div class="page">
 <section class="main">
@@ -64,9 +66,9 @@ session_start();
 </section>
 </div>
 
-
+<!--Footer-->
 <?php
 require("include/footer.inc.php");
   foot();
-  ?>
+?>
 
