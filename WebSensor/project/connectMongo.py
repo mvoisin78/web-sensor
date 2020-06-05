@@ -1,5 +1,7 @@
 from pymongo import MongoClient
 import json
+import time
+
 #pour terminal mongo
 #cd C:\Program Files\MongoDB\Server\4.2\bin
 #mongod
@@ -61,17 +63,29 @@ def getLastTweetId():
         tweet_id = tweet['tweet_id']
     return tweet_id
 
-
 def selectAll():
     collection = db.tweet
-    tweets = []
+    _tweets = {}
+    _tweets['text']=[]
+    _tweets['tweet_id']=[]
+    _tweets['followers_count']=[]
+    _tweets['date']=[]
+    _tweets['urls']=[]
     #selection de 1000 tweets trier par tweet_id du plus récent au plus vieux .limit(3000)
-    for tweet in collection.find().sort([('tweet_id', -1)]):
-        #tweets.append(tweet)
-        tweets.append(tweet['text'])
-    return tweets
+    for tweet in collection.find().sort([('tweet_id', 1)]).limit(1000):
+        ts = time.strftime('%Y-%m-%d', time.strptime(tweet["date"],'%a %b %d %H:%M:%S +0000 %Y'))
+        
+        _tweets['text'].append(str(tweet['text']))
+        _tweets['tweet_id'].append(str(tweet['tweet_id']))
+        _tweets['followers_count'].append(str(tweet['followers_count']))
+        _tweets['date'].append(str(ts))
+        _tweets['urls'].append(str(tweet['urls']))
+    return _tweets
 
+"""
 ##Appel de test :
-#tweets = selectAll()
-#for tweet in tweets:
-#    print(tweet)
+tweets = selectAll()
+for tweet in tweets:
+    print(tweets[tweet])
+
+"""
