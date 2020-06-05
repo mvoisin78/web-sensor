@@ -57,6 +57,8 @@ _cluster_info = {}
 for i in range(n_clusters_):
     _cluster_info['cluster'+str(i)+'_tweets']=[]
     _cluster_info['cluster'+str(i)+'_followers_count']=[]
+    _cluster_info['cluster'+str(i)+'user_id']=[]
+
 clusters = collections.defaultdict(list)
 for i, label in enumerate(ml.labels_):
     clusters[label].append(i)
@@ -72,7 +74,8 @@ for cluster in range(n_clusters_):
 
         _cluster_info['cluster'+str(cluster)+'_tweets'].append(_complete_dataset['tweet_id'][dataset.index(dataset[sentence])])
         _cluster_info['cluster'+str(cluster)+'_followers_count'].append(_complete_dataset['followers_count'][dataset.index(dataset[sentence])])
-        
+        _cluster_info['cluster'+str(cluster)+'user_id'].append(_complete_dataset['user_id'][dataset.index(dataset[sentence])])
+         
         w=subject(dataset[sentence],vocabulary)
         if total_feature.get(w) == None :
                 total_feature[w] = 1
@@ -84,8 +87,8 @@ for cluster in range(n_clusters_):
     pourcentage[cluster].append(total_feature.copy())
     
     total_feature.clear()
-    _cluster_info['cluster'+str(cluster)+'_famousAccount']=getMaxFollowerTweet(_cluster_info['cluster'+str(cluster)+'_tweets'],_cluster_info['cluster'+str(cluster)+'_followers_count'])
-
+    _cluster_info['cluster'+str(cluster)+'_famousTweetsID']=getMaxFollowerTweet(_cluster_info['cluster'+str(cluster)+'_tweets'],_cluster_info['cluster'+str(cluster)+'_followers_count'])
+    _cluster_info['cluster'+str(cluster)+'_famousUserID']=getMaxFollowerTweet(_cluster_info['cluster'+str(cluster)+'_tweets'],_cluster_info['cluster'+str(cluster)+'_user_id'])
 
 print(_cluster_info)
 

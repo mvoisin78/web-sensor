@@ -70,16 +70,17 @@ def selectAll():
     _tweets['tweet_id']=[]
     _tweets['followers_count']=[]
     _tweets['date']=[]
-    _tweets['urls']=[]
+    _tweets['user_id']=[]
     #selection de 1000 tweets trier par tweet_id du plus récent au plus vieux .limit(3000)
-    for tweet in collection.find().sort([('tweet_id', 1)]).limit(1000):
+    for tweet in collection.find().sort([('tweet_id', 1)]):
         ts = time.strftime('%Y-%m-%d', time.strptime(tweet["date"],'%a %b %d %H:%M:%S +0000 %Y'))
         
         _tweets['text'].append(str(tweet['text']))
         _tweets['tweet_id'].append(str(tweet['tweet_id']))
         _tweets['followers_count'].append(str(tweet['followers_count']))
         _tweets['date'].append(str(ts))
-        _tweets['urls'].append(str(tweet['urls']))
+        _tweets['user_id'].append(str(tweet['user_id']))
+        
     return _tweets
 
 """
