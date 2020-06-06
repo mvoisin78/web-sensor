@@ -20,7 +20,12 @@ session_start();
 
 <div class="page">
 <section id="main">
+<div class="container-fluid">
+    <div class="container">
+<div class="row">
+
   <h3>Visualiser et comparer des événments: </h3>
+  <div class="col-md-6">
    <div class="informations-accueil">
   <ul> Liste d'events à comparer :
    <li>event n°1 : </li>
@@ -41,9 +46,9 @@ session_start();
         <li> Tweet Populaire : </li>
 
       </ul>
-  </div
-
-
+  </div>
+</div>
+<div class="col-md-6">
 <h2>Les graphiques de comparaison :</h2>
 <div id="piechart" class="accueil-graphique">
 
@@ -134,7 +139,7 @@ session_start();
 
 </script>
 </div>
-
+</div>
 
   <form>
   <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Ajouter un event</a>
@@ -142,6 +147,9 @@ session_start();
   <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-signal"></span> Changer de graphique</a>
 </form>
 
+</div>
+</div>
+</div>
 </section>
 </div>
 <?php

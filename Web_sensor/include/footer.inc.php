@@ -1,9 +1,75 @@
 <?php
 	function foot(){
-	echo"<div class=\"footer\">";
-  	echo"<footer>";
-  	echo"<p style=\"text-align: center;\">Auteurs :<strong> Lydia KHELFANE</strong> <strong> Gabriel CHEVALIER</strong>, <strong> Martin Guilbert</strong>, <strong> Mathieu Voisin</strong></p>";
- 	echo"<p style=\"text-align: center; background-color: none;\">COPYRIGHT © 2019/2020</p>";
+	echo"<footer class=\"page-footer font-small blue pt-4\">";
+  	echo"<div class=\"container-fluid text-center text-md-left\">";
+
+    echo"<div class=\"row\">
+
+      <!-- Grid column -->
+      <div class=\"col-md-6 mt-md-0 mt-3\">
+
+        <!-- Content -->
+        <h5 class=\"text-uppercase\">à propos</h5>
+        <p>Here you can use rows and columns to organize your footer content.</p>
+
+      </div>
+      <!-- Grid column -->
+
+      <hr class=\"clearfix w-100 d-md-none pb-3\">
+
+      <!-- Grid column -->
+      <div class=\"col-md-3 mb-md-0 mb-3\">
+
+        <!-- Links -->
+        <h5 class=\"text-uppercase\">Auteurs </h5>
+
+        <ul class=\"list-unstyled\">
+          <li>
+            <a href=\"#!\"> Lydia KHELFANE</a>
+          </li>
+          <li>
+            <a href=\"#!\">Gabriel CHEVALIER</a>
+          </li>
+          <li>
+            <a href=\"#!\">Mathieu VOISIN</a>
+          </li>
+          <li>
+            <a href=\"#!\">Martin GUILBERT</a>
+          </li>
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class=\"col-md-3 mb-md-0 mb-3\">
+
+        <!-- Links -->
+        <h5 class=\"text-uppercase\">Référents</h5>
+
+        <ul class=\"list-unstyled\">
+          <li>
+            <a href=\"#!\">Dimitris KOTZINOS</a>
+          </li>
+          <li>
+            <a href=\"#!\">Wassim </a>
+          </li>
+          <li>
+            <a href=\"#!\">Liu TIANXIAO</a>
+          </li>
+          </ul>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div> ";
+
+ 	echo"<div class=\"footer-copyright text-center py-3\">© 2020 Copyright:
+    <a href=\"index.php/\"> Web Sensor</a>
+  </div>";
 	echo"</footer>";
  	echo"</div>";
 	echo"</body>";

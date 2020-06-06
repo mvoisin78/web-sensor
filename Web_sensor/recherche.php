@@ -25,7 +25,9 @@ session_start();
                                
 
         <form action = "verif-form.php" method = "get">
-   <input type = "search" name = "terme">
+        <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
+            aria-label="Search">
+   <input type = "search" name = "terme" placeholder ="Rechercher un event...">
    <input type = "submit" name = "s" value = "Rechercher">
   </form>
 

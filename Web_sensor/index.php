@@ -25,6 +25,42 @@ session_start();
 			stroke: steelblue;
 			stroke-width: 2px;
 			}
+
+blockquote.twitter-tweet {
+  display: inline-block;
+  font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 16px;
+  border-color: #eee #ddd #bbb;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  margin: 10px 5px;
+  padding: 0 16px 16px 16px;
+  max-width: 468px;
+}
+
+blockquote.twitter-tweet p {
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 20px;
+}
+
+blockquote.twitter-tweet a {
+  color: inherit;
+  font-weight: normal;
+  text-decoration: none;
+  outline: 0 none;
+}
+
+blockquote.twitter-tweet a:hover,
+blockquote.twitter-tweet a:focus {
+  text-decoration: underline;
+}
+
+
     </style>
 
 </head>
@@ -48,16 +84,17 @@ session_start();
 </script>
 
 <div class="page">
-<section class="main">
+<section class="main"> 
+	<div class="container-fluid">
+		<div class="container">
+<div class="row">
 
 <h2> Events populaires : </h2>
-
-
-<div class="informations-accueil">
+<div class="col-md-6">
+<div class="informations-accueil"> 
 	<ul> 
-		<li>Event 1:<blockquote class="twitter-tweet"><p lang="fr" dir="ltr"><a href="https://twitter.com/hashtag/Municipales2020?src=hash&amp;ref_src=twsrc%5Etfw">#Municipales2020</a> <a href="https://twitter.com/hashtag/COVID19?src=hash&amp;ref_src=twsrc%5Etfw">#COVID19</a> | Le second tour des élections municipales sera fixé au 28 juin 2020. Cette décision sera toutefois réversible, si la situation sanitaire l’exige. Une clause de revoyure avec le conseil scientifique aura donc lieu, sans doute dans deux semaines. 
-			<a href="https://t.co/47xyfvQrCY">pic.twitter.com/47xyfvQrCY</a></p>&mdash; Gouvernement (@gouvernementFR) <a href="https://twitter.com/gouvernementFR/status/1263847132550828033?ref_src=twsrc%5Etfw">May 22, 2020</a></blockquote> 
-			<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> </li>
+		<li> <blockquote class="twitter-tweet"><p lang="fr" dir="ltr">🥇🔥🇫🇷<br>La médaille, la flamme, Marianne.<br>Voici le nouveau visage des Jeux Olympiques et Paralympiques de  #Paris2024<br><br>The medal, the flame, Marianne</p>&mdash; Paris 2024 (@Paris2024) 
+			October 21, 2019</blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></li>
 		<li>Event 2: <blockquote class="twitter-tweet"><p lang="fr" dir="ltr">🇫🇷 FLASH - Il est 00h, nous sommes le <a href="https://twitter.com/hashtag/11mai?src=hash&amp;ref_src=twsrc%5Etfw">#11mai</a> : la 
 			<a href="https://twitter.com/hashtag/France?src=hash&amp;ref_src=twsrc%5Etfw">#France</a> n’est désormais plus en <a href="https://twitter.com/hashtag/confinement?src=hash&amp;ref_src=twsrc%5Etfw">#confinement</a>. Au total, le pays aura été confiné pendant 55 jours en raison de l’épidémie de 
 			<a href="https://twitter.com/hashtag/COVID19?src=hash&amp;ref_src=twsrc%5Etfw">#COVID19</a>. <a href="https://twitter.com/hashtag/Deconfinement?src=hash&amp;ref_src=twsrc%5Etfw">#Deconfinement</a></p>&mdash; Conflits (@Conflits_FR)
@@ -79,8 +116,9 @@ session_start();
 
 	
 </ul>
+</div> 
 </div>
-
+<div class="col-md-6">
 <div id="piechart" class="accueil-graphique">
 
 
@@ -170,11 +208,14 @@ session_start();
 
 </script>
 </div>
-
+</div>
+</div>
+</div>
+</div>
 </section>
 </div>
 
-<!--Footer-->
+<!-----Footer-->
 <?php
 require("include/footer.inc.php");
   foot();
