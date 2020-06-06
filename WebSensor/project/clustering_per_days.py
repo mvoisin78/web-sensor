@@ -21,7 +21,7 @@ from pymongo import MongoClient
 from testNLP import *
 from connectMongo import *
 
-from time import time
+import time
 
 def subject(sentence,features):
         subject =""
@@ -39,6 +39,7 @@ _complete_dataset = selectAll()
 
 dataset=_complete_dataset['text']
 
+start_time = time.time()
 max_features = len(dataset)*0.005
 tfidf_vectorizer = TfidfVectorizer(tokenizer=normalize_corpus,ngram_range=(1,4),max_features=int(max_features))
 
@@ -57,7 +58,7 @@ _cluster_info = {}
 for i in range(n_clusters_):
     _cluster_info['cluster'+str(i)+'_tweets']=[]
     _cluster_info['cluster'+str(i)+'_followers_count']=[]
-    _cluster_info['cluster'+str(i)+'user_id']=[]
+    _cluster_info['cluster'+str(i)+'_user_id']=[]
 
 clusters = collections.defaultdict(list)
 for i, label in enumerate(ml.labels_):
@@ -74,7 +75,7 @@ for cluster in range(n_clusters_):
 
         _cluster_info['cluster'+str(cluster)+'_tweets'].append(_complete_dataset['tweet_id'][dataset.index(dataset[sentence])])
         _cluster_info['cluster'+str(cluster)+'_followers_count'].append(_complete_dataset['followers_count'][dataset.index(dataset[sentence])])
-        _cluster_info['cluster'+str(cluster)+'user_id'].append(_complete_dataset['user_id'][dataset.index(dataset[sentence])])
+        _cluster_info['cluster'+str(cluster)+'_user_id'].append(_complete_dataset['user_id'][dataset.index(dataset[sentence])])
          
         w=subject(dataset[sentence],vocabulary)
         if total_feature.get(w) == None :
@@ -89,9 +90,8 @@ for cluster in range(n_clusters_):
     total_feature.clear()
     _cluster_info['cluster'+str(cluster)+'_famousTweetsID']=getMaxFollowerTweet(_cluster_info['cluster'+str(cluster)+'_tweets'],_cluster_info['cluster'+str(cluster)+'_followers_count'])
     _cluster_info['cluster'+str(cluster)+'_famousUserID']=getMaxFollowerTweet(_cluster_info['cluster'+str(cluster)+'_tweets'],_cluster_info['cluster'+str(cluster)+'_user_id'])
-
-print(_cluster_info)
-
+    _cluster_info['cluster'+str(cluster)+'_popularity']=(total_data[cluster]*len(_complete_dataset['user_id']))/len(dataset)
+    _cluster_info['cluster'+str(cluster)+'_lenght']=total_data[cluster]
 for cluster in pourcentage :
     for key in pourcentage[cluster] :
         lastlen = 999
@@ -100,4 +100,14 @@ for cluster in pourcentage :
             if len(char) <= lastlen:
                 lastlen = len(char)
                 bestChar = char
-        print(bestChar)    
+    _cluster_info['cluster'+str(cluster)+'_feature']=bestChar
+
+print("--- Clustering finish in %s seconds ---" % (time.time() - start_time))
+print("NUMBE OF CLUSTERS : ",n_clusters_)
+for cluster in range(n_clusters_):
+        print("Cluster ",cluster," popularity :",_cluster_info['cluster'+str(cluster)+'_popularity'],"lenght : ",_cluster_info['cluster'+str(cluster)+'_lenght'])
+        print("Cluster ",cluster," Feature :",_cluster_info['cluster'+str(cluster)+'_feature'])
+        print("Cluster ",cluster," famous tweet id :",_cluster_info['cluster'+str(cluster)+'_famousTweetsID'])
+        print("Cluster ",cluster," famous user id :",_cluster_info['cluster'+str(cluster)+'_famousUserID'])
+        url = "https://twitter.com/"+str(_cluster_info['cluster'+str(cluster)+'_famousUserID'])+"/status/"+str(_cluster_info['cluster'+str(cluster)+'_famousTweetsID'])
+        print("Url of the famous tweet :",url)
