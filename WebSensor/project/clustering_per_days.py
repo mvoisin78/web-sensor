@@ -39,13 +39,17 @@ _complete_dataset = selectAll()
 
 dataset=_complete_dataset['text']
 
+
 start_time = time.time()
 max_features = len(dataset)*0.005
+
 tfidf_vectorizer = TfidfVectorizer(tokenizer=normalize_corpus,ngram_range=(1,4),max_features=int(max_features))
 
 X = tfidf_vectorizer.fit_transform(dataset).toarray()
 
 vocabulary = tfidf_vectorizer.get_feature_names()
+
+#print(vocabulary)
 
 ml = DBSCAN(eps=0.4, min_samples=50)
 ml.fit(X)
@@ -90,7 +94,8 @@ for cluster in range(n_clusters_):
     total_feature.clear()
     _cluster_info['cluster'+str(cluster)+'_famousTweetsID']=getMaxFollowerTweet(_cluster_info['cluster'+str(cluster)+'_tweets'],_cluster_info['cluster'+str(cluster)+'_followers_count'])
     _cluster_info['cluster'+str(cluster)+'_famousUserID']=getMaxFollowerTweet(_cluster_info['cluster'+str(cluster)+'_tweets'],_cluster_info['cluster'+str(cluster)+'_user_id'])
-    _cluster_info['cluster'+str(cluster)+'_popularity']=(total_data[cluster]*len(_complete_dataset['user_id']))/len(dataset)
+    #print("Cluster ",cluster," compute popularity :",total_data[cluster],"*",len(list(set(_cluster_info['cluster'+str(cluster)+'_user_id']))),"/",len(dataset))
+    _cluster_info['cluster'+str(cluster)+'_popularity']=(total_data[cluster]*len(list(set(_cluster_info['cluster'+str(cluster)+'_user_id']))))/len(dataset)
     _cluster_info['cluster'+str(cluster)+'_lenght']=total_data[cluster]
 for cluster in pourcentage :
     for key in pourcentage[cluster] :
@@ -103,11 +108,11 @@ for cluster in pourcentage :
     _cluster_info['cluster'+str(cluster)+'_feature']=bestChar
 
 print("--- Clustering finish in %s seconds ---" % (time.time() - start_time))
-print("NUMBE OF CLUSTERS : ",n_clusters_)
+print("NUMBE OF CLUSTERS : ",n_clusters_," NUMBER OF SAMPLES :",len(dataset))
 for cluster in range(n_clusters_):
         print("Cluster ",cluster," popularity :",_cluster_info['cluster'+str(cluster)+'_popularity'],"lenght : ",_cluster_info['cluster'+str(cluster)+'_lenght'])
         print("Cluster ",cluster," Feature :",_cluster_info['cluster'+str(cluster)+'_feature'])
-        print("Cluster ",cluster," famous tweet id :",_cluster_info['cluster'+str(cluster)+'_famousTweetsID'])
-        print("Cluster ",cluster," famous user id :",_cluster_info['cluster'+str(cluster)+'_famousUserID'])
+        #print("Cluster ",cluster," famous tweet id :",_cluster_info['cluster'+str(cluster)+'_famousTweetsID'])
+        #print("Cluster ",cluster," famous user id :",_cluster_info['cluster'+str(cluster)+'_famousUserID'])
         url = "https://twitter.com/"+str(_cluster_info['cluster'+str(cluster)+'_famousUserID'])+"/status/"+str(_cluster_info['cluster'+str(cluster)+'_famousTweetsID'])
-        print("Url of the famous tweet :",url)
+        #print("Url of the famous tweet :",url)
