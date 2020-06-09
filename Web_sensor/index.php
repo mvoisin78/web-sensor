@@ -64,7 +64,6 @@ blockquote.twitter-tweet a:focus {
     </style>
 
 </head>
-
 <body>
 <!-- Header -->
 <?php
@@ -85,22 +84,25 @@ blockquote.twitter-tweet a:focus {
 
 <div class="page">
 <section class="main"> 
-	<div class="container-fluid">
-		<div class="container">
-<div class="row">
+<div class="container-fluid">
+	 <div class="container">	
+		<div class="row">
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+	<h2> Top 10 des events populaires : </h2>
 
-<h2> Events populaires : </h2>
-<div class="col-md-6">
 <div class="informations-accueil"> 
-	<ul> 
-		<li> <blockquote class="twitter-tweet"><p lang="fr" dir="ltr">🥇🔥🇫🇷<br>La médaille, la flamme, Marianne.<br>Voici le nouveau visage des Jeux Olympiques et Paralympiques de  #Paris2024<br><br>The medal, the flame, Marianne</p>&mdash; Paris 2024 (@Paris2024) 
-			October 21, 2019</blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></li>
-		<li>Event 2: <blockquote class="twitter-tweet"><p lang="fr" dir="ltr">🇫🇷 FLASH - Il est 00h, nous sommes le <a href="https://twitter.com/hashtag/11mai?src=hash&amp;ref_src=twsrc%5Etfw">#11mai</a> : la 
+	
+	<ul> <li  style="margin-top=18px;"> <span>Les municipales :</span><blockquote class="twitter-tweet"><p lang="fr" dir="ltr">Le 1er tour des <a href="https://twitter.com/hashtag/municipales?src=hash&amp;ref_src=twsrc%5Etfw">#municipales</a> s’est tenu le 15 mars dans des conditions exceptionnelles, avec un taux d’abstention significatif mais dans des conditions rigoureuses de distanciation physique et d’hygiène. Merci aux assesseurs et aux équipes municipales qui l’ont rendu possible. 
+			<a href="https://t.co/is2yvRM2xo">pic.twitter.com/is2yvRM2xo</a></p>&mdash; Edouard Philippe (@EPhilippePM) <a href="https://twitter.com/EPhilippePM/status/1263783971814547456?ref_src=twsrc%5Etfw">May 22, 2020</a></blockquote>
+		 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></li>
+		<!--<li> <blockquote class="twitter-tweet"><p lang="fr" dir="ltr">🥇🔥🇫🇷<br>La médaille, la flamme, Marianne.<br>Voici le nouveau visage des Jeux Olympiques et Paralympiques de  #Paris2024<br><br>The medal, the flame, Marianne</p>&mdash; Paris 2024 (@Paris2024) 
+			October 21, 2019</blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></li> -->
+		<li>Déconfinement : <blockquote class="twitter-tweet"><p lang="fr" dir="ltr">🇫🇷 FLASH - Il est 00h, nous sommes le <a href="https://twitter.com/hashtag/11mai?src=hash&amp;ref_src=twsrc%5Etfw">#11mai</a> : la 
 			<a href="https://twitter.com/hashtag/France?src=hash&amp;ref_src=twsrc%5Etfw">#France</a> n’est désormais plus en <a href="https://twitter.com/hashtag/confinement?src=hash&amp;ref_src=twsrc%5Etfw">#confinement</a>. Au total, le pays aura été confiné pendant 55 jours en raison de l’épidémie de 
 			<a href="https://twitter.com/hashtag/COVID19?src=hash&amp;ref_src=twsrc%5Etfw">#COVID19</a>. <a href="https://twitter.com/hashtag/Deconfinement?src=hash&amp;ref_src=twsrc%5Etfw">#Deconfinement</a></p>&mdash; Conflits (@Conflits_FR)
 		 <a href="https://twitter.com/Conflits_FR/status/1259604126834532359?ref_src=twsrc%5Etfw">May 10, 2020</a></blockquote>
 		  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></li>
-		<li> Event 3: <blockquote class="twitter-tweet"><p lang="fr" dir="ltr"><a href="https://twitter.com/hashtag/CORONAVIRUS?src=hash&amp;ref_src=twsrc%5Etfw">#CORONAVIRUS</a> <a href="https://twitter.com/hashtag/COVID19?src=hash&amp;ref_src=twsrc%5Etfw">#COVID19</a>
+		<li> Coronavirus : <blockquote class="twitter-tweet"><p lang="fr" dir="ltr"><a href="https://twitter.com/hashtag/CORONAVIRUS?src=hash&amp;ref_src=twsrc%5Etfw">#CORONAVIRUS</a> <a href="https://twitter.com/hashtag/COVID19?src=hash&amp;ref_src=twsrc%5Etfw">#COVID19</a>
 		 | Le port du masque est-il obligatoire dans les transports en commun ? ⤵️<br>⚠️ Si vous êtes malade, avez été en contact avec un malade ou êtes une personne à risque, le port du masque est également fortement recommandé. <a href="https://t.co/qexgqCYkHs">
 		 pic.twitter.com/qexgqCYkHs</a></p>&mdash; Gouvernement (@gouvernementFR) <a href="https://twitter.com/gouvernementFR/status/1264560233126518786?ref_src=twsrc%5Etfw">May 24, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></li>
 		<li> Event 4: <blockquote class="twitter-tweet"><p lang="fr" dir="ltr">Il y a 6 ans jour pour jour, l&#39;équipe de France battait l&#39;Ukraine 3-0 au Stade de France après une défaite 2-0 au match aller, et se qualifiait pour la Coupe du monde 2014.<br>🇫🇷<br><br>Ce match était fou. 🤯 
@@ -113,12 +115,14 @@ blockquote.twitter-tweet a:focus {
 		<li> Event 7: <blockquote class="twitter-tweet"><p lang="fr" dir="ltr">Le 1er tour des <a href="https://twitter.com/hashtag/municipales?src=hash&amp;ref_src=twsrc%5Etfw">#municipales</a> s’est tenu le 15 mars dans des conditions exceptionnelles, avec un taux d’abstention significatif mais dans des conditions rigoureuses de distanciation physique et d’hygiène. Merci aux assesseurs et aux équipes municipales qui l’ont rendu possible. 
 			<a href="https://t.co/is2yvRM2xo">pic.twitter.com/is2yvRM2xo</a></p>&mdash; Edouard Philippe (@EPhilippePM) <a href="https://twitter.com/EPhilippePM/status/1263783971814547456?ref_src=twsrc%5Etfw">May 22, 2020</a></blockquote>
 		 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></li>
-
 	
 </ul>
 </div> 
 </div>
-<div class="col-md-6">
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+	<h2> Graphique du top 10 : </h2>
+
 <div id="piechart" class="accueil-graphique">
 
 
@@ -127,27 +131,37 @@ blockquote.twitter-tweet a:focus {
 	//PIECHART
 
 	var data_list_obj = [
-		{"label" : "Event 1",
-		"occurence" : 4348
+		{"label" : "  Les municipales ",
+		"occurence" : 4548
 		},
-		{"label" : "Event 2",
-		"occurence" : 8851
+		{"label" : "Déconfinement ",
+		"occurence" : 6051
 		},
-		{"label" : "Event 3",
-		"occurence" : 7544
+		{"label" : "Coronavirus ",
+		"occurence" : 5044
 		},
-		{"label" : "Event 4",
+		{"label" : "Coupe du monde",
 		"occurence" : 1200
 		},
-		{"label" : "Event 5",
-		"occurence" : 7544
+		{"label" : "Jeux Olympiques",
+		"occurence" : 3544
 		},
-		{"label" : "Event 6",
-		"occurence" : 1551
+		{"label" : "Vacances d'été",
+		"occurence" : 1951
 		},
-		{"label" : "Event 7",
-		"occurence" : 2303
+		{"label" : "Violence policère",
+		"occurence" : 3303
+		},
+		{"label" : "match de rugby",
+		"occurence" : 1303
+		},
+		{"label" : "Championnat",
+		"occurence" : 3113
+		},
+		{"label" : "fête nationale",
+		"occurence" : 1653
 		}
+
 	];
 	occurence_list = [];
 	label_list = [];
@@ -164,7 +178,7 @@ blockquote.twitter-tweet a:focus {
 		height = document.getElementById('piechart').offsetHeight,
 		radius = Math.min(width, height) / 2;
 
-	var color = ["red","orange","yellow","34CA00","green","steelblue","blue","10cf9b","13b934","647f1f","81431E","ef3038","2b4ab1","715438","814994","purple","ddde1e","c6721a","ea7c60","d154e9","ea5c61","998df0","27e33c","9bcb1a","edca77","a1f3b1",/*repeat*/"red","orange","yellow","34CA00","green","steelblue","blue","10cf9b","13b934","647f1f","81431E","ef3038","2b4ab1","715438","814994","purple","ddde1e","c6721a","ea7c60","d154e9","ea5c61","998df0","27e33c","9bcb1a","edca77","a1f3b1"];
+	var color = ["red","orange","yellow","34CA00","green","steelblue","blue","10cf9b","13b934","81431E","ef3038","2b4ab1","715438","814994","purple","ddde1e","c6721a","ea7c60","d154e9","ea5c61","998df0","27e33c","9bcb1a","edca77","a1f3b1",/*repeat*/"red","orange","yellow","34CA00","green","steelblue","blue","10cf9b","13b934","647f1f","81431E","ef3038","2b4ab1","715438","814994","purple","ddde1e","c6721a","ea7c60","d154e9","ea5c61","998df0","27e33c","9bcb1a","edca77","a1f3b1"];
 
 	var arc = d3.arc()
 		.outerRadius(radius - 10)
@@ -209,9 +223,29 @@ blockquote.twitter-tweet a:focus {
 </script>
 </div>
 </div>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+		<h2> Prédictions pour la semaine prochaine : </h2>
+	<div class="informations-accueil">
+			<ol>
+				<li>Cornavirus</li>
+				<li>Déconfinement</li>
+				<li>Match de foot</li>
+				<li>Discourd du Président</li>
+				<li>Didier Raoult</li>
+				<li>Chine</li>
+				<li>Champions league</li>
+				<li>Stade de France</li>
+				<li>Coupe du monde</li>
+				<li>Vacances d'été</li>
+
+			</ol>
+	</div>
+</div>
+
 </div>
 </div>
 </div>
+
 </section>
 </div>
 

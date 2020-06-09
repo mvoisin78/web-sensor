@@ -52,10 +52,10 @@
             <a href=\"#!\">Dimitris KOTZINOS</a>
           </li>
           <li>
-            <a href=\"#!\">Wassim </a>
+            <a href=\"#!\">Wassim SWAILAH </a>
           </li>
           <li>
-            <a href=\"#!\">Liu TIANXIAO</a>
+            <a href=\"#!\">Tianxiao LIU</a>
           </li>
           </ul>
 
