@@ -32,6 +32,10 @@ else:
 client = MongoClient('mongodb://localhost:27017/')
 db = client.webSensor
 
+def getTweetById(idTweet,currentCollection):
+    collection = db[currentCollection]
+    return collection.find_one( { "tweet_id": str(idTweet) } )
+
 def saveInTweet(post):
     collection = db.tweet
     collection.insert_one(post)
@@ -63,8 +67,8 @@ def getLastTweetId():
         tweet_id = tweet['tweet_id']
     return tweet_id
 
-def selectAll():
-    collection = db.tweet
+def selectAll(currentCollection):
+    collection = db[currentCollection]
     _tweets = {}
     _tweets['text']=[]
     _tweets['tweet_id']=[]
@@ -72,7 +76,7 @@ def selectAll():
     _tweets['date']=[]
     _tweets['user_id']=[]
     #selection de 1000 tweets trier par tweet_id du plus récent au plus vieux .limit(3000)
-    for tweet in collection.find().sort([('tweet_id', 1)]):
+    for tweet in collection.find().sort([('tweet_id', 1)]).limit(30000):
         ts = time.strftime('%Y-%m-%d', time.strptime(tweet["date"],'%a %b %d %H:%M:%S +0000 %Y'))
         
         _tweets['text'].append(str(tweet['text']))
@@ -84,9 +88,18 @@ def selectAll():
     return _tweets
 
 """
+#file = open("dataset.txt", "w")
 ##Appel de test :
+count = 0
 tweets = selectAll()
-for tweet in tweets:
-    print(tweets[tweet])
+print(len(tweets['text']))
+for tweet in tweets['text']:
+    #file.write(str(tweet.encode('ascii', 'ignore').decode('utf-8', 'ignore')))
+    #file.write(" ")
+    if "coronavirus" in str(tweet.encode('ascii', 'ignore').decode('utf-8', 'ignore')) :
+        count +=1    
+#file.close()
 
+print(count)
 """
+#print(getTweetById(1248999470018097153))
