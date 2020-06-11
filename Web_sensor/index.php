@@ -102,9 +102,9 @@ catch (Exception $e)
         die('Erreur : ' . $e->getMessage());
 
 }
+SELECT * FROM popularity WHERE date = " " FETCH FIRST 10 ROW ONLY ORDER BY daily_popularity;
 
-
-$reponse = $bdd->query('SELECT * FROM tweet');
+$reponse = $bdd->query('SELECT * FROM popularity INNER join event ON popularity.event_id = event.event_id INNER join tweet ON tweet.tweet_id=popularity.tweet_id ');
 
 
 $donnees = $reponse->fetch();
@@ -263,7 +263,8 @@ while ($donnees_prediction = $reponse_prediction->fetch())
 		<h2> Prédictions pour la semaine prochaine : </h2>
 	<div class="informations-accueil">
 			<ol>
-				<li><?php echo $donnees_prediction['name']; ?></li>			
+				<li><?php echo $donnees_prediction['name']; ?></li>
+				
 
 			</ol>
 	</div>
