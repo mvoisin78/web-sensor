@@ -82,7 +82,7 @@ blockquote.twitter-tweet a:focus {
 	}
 </script>
 
-<div class="page">
+ <div class="page">
 <section class="main"> 
 <div class="container-fluid">
 	 <div class="container">	
@@ -90,33 +90,46 @@ blockquote.twitter-tweet a:focus {
 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 	<h2> Top 10 des events populaires : </h2>
 
-<div class="informations-accueil"> 
-	
-	<ul> <li  style="margin-top=18px;"> <span>Les municipales :</span><blockquote class="twitter-tweet"><p lang="fr" dir="ltr">Le 1er tour des <a href="https://twitter.com/hashtag/municipales?src=hash&amp;ref_src=twsrc%5Etfw">#municipales</a> s’est tenu le 15 mars dans des conditions exceptionnelles, avec un taux d’abstention significatif mais dans des conditions rigoureuses de distanciation physique et d’hygiène. Merci aux assesseurs et aux équipes municipales qui l’ont rendu possible. 
-			<a href="https://t.co/is2yvRM2xo">pic.twitter.com/is2yvRM2xo</a></p>&mdash; Edouard Philippe (@EPhilippePM) <a href="https://twitter.com/EPhilippePM/status/1263783971814547456?ref_src=twsrc%5Etfw">May 22, 2020</a></blockquote>
-		 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></li>
-		<!--<li> <blockquote class="twitter-tweet"><p lang="fr" dir="ltr">🥇🔥🇫🇷<br>La médaille, la flamme, Marianne.<br>Voici le nouveau visage des Jeux Olympiques et Paralympiques de  #Paris2024<br><br>The medal, the flame, Marianne</p>&mdash; Paris 2024 (@Paris2024) 
-			October 21, 2019</blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></li> -->
-		<li>Déconfinement : <blockquote class="twitter-tweet"><p lang="fr" dir="ltr">🇫🇷 FLASH - Il est 00h, nous sommes le <a href="https://twitter.com/hashtag/11mai?src=hash&amp;ref_src=twsrc%5Etfw">#11mai</a> : la 
-			<a href="https://twitter.com/hashtag/France?src=hash&amp;ref_src=twsrc%5Etfw">#France</a> n’est désormais plus en <a href="https://twitter.com/hashtag/confinement?src=hash&amp;ref_src=twsrc%5Etfw">#confinement</a>. Au total, le pays aura été confiné pendant 55 jours en raison de l’épidémie de 
-			<a href="https://twitter.com/hashtag/COVID19?src=hash&amp;ref_src=twsrc%5Etfw">#COVID19</a>. <a href="https://twitter.com/hashtag/Deconfinement?src=hash&amp;ref_src=twsrc%5Etfw">#Deconfinement</a></p>&mdash; Conflits (@Conflits_FR)
-		 <a href="https://twitter.com/Conflits_FR/status/1259604126834532359?ref_src=twsrc%5Etfw">May 10, 2020</a></blockquote>
-		  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></li>
-		<li> Coronavirus : <blockquote class="twitter-tweet"><p lang="fr" dir="ltr"><a href="https://twitter.com/hashtag/CORONAVIRUS?src=hash&amp;ref_src=twsrc%5Etfw">#CORONAVIRUS</a> <a href="https://twitter.com/hashtag/COVID19?src=hash&amp;ref_src=twsrc%5Etfw">#COVID19</a>
-		 | Le port du masque est-il obligatoire dans les transports en commun ? ⤵️<br>⚠️ Si vous êtes malade, avez été en contact avec un malade ou êtes une personne à risque, le port du masque est également fortement recommandé. <a href="https://t.co/qexgqCYkHs">
-		 pic.twitter.com/qexgqCYkHs</a></p>&mdash; Gouvernement (@gouvernementFR) <a href="https://twitter.com/gouvernementFR/status/1264560233126518786?ref_src=twsrc%5Etfw">May 24, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></li>
-		<li> Event 4: <blockquote class="twitter-tweet"><p lang="fr" dir="ltr">Il y a 6 ans jour pour jour, l&#39;équipe de France battait l&#39;Ukraine 3-0 au Stade de France après une défaite 2-0 au match aller, et se qualifiait pour la Coupe du monde 2014.<br>🇫🇷<br><br>Ce match était fou. 🤯 
-			<a href="https://t.co/smDVoCvshc">pic.twitter.com/smDVoCvshc</a></p>&mdash; Actu Foot (@ActuFoot_) <a href="https://twitter.com/ActuFoot_/status/1196578094078926848?ref_src=twsrc%5Etfw">November 18, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> </li>
-		<li> Event 5: <blockquote class="twitter-tweet"><p lang="fr" dir="ltr">🥇🔥🇫🇷<br>La médaille, la flamme, Marianne.<br>Voici le nouveau visage des Jeux Olympiques et Paralympiques de <a href="https://twitter.com/hashtag/Paris2024?src=hash&amp;ref_src=twsrc%5Etfw">#Paris2024</a><br><br>The medal, the flame, Marianne<br>Here is the new face of the Olympic and Paralympic Games of <a href="https://twitter.com/hashtag/Paris2024?src=hash&amp;ref_src=twsrc%5Etfw">#Paris2024</a> <a href="https://t.co/6VvsItrql6">pic.twitter.com/6VvsItrql6</a></p>&mdash; Paris 2024 (@Paris2024) 
-			<a href="https://twitter.com/Paris2024/status/1186347647403249664?ref_src=twsrc%5Etfw">October 21, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></li>
-		<li> Event 6:<blockquote class="twitter-tweet"><p lang="fr" dir="ltr">🇫🇷 FLASH - La <a href="https://twitter.com/hashtag/France?src=hash&amp;ref_src=twsrc%5Etfw">#France</a>
-		 sera la seule destination possible lors des <a href="https://twitter.com/hashtag/vacances?src=hash&amp;ref_src=twsrc%5Etfw">#vacances</a> d’<a href="https://twitter.com/hashtag/%C3%A9t%C3%A9?src=hash&amp;ref_src=twsrc%5Etfw">#été</a>. Les 9 millions de touristes français qui avaient prévu de partir à l’étranger devront rester dans le pays. (Le Parisien) <a href="https://t.co/SEz7CEoT4f">pic.twitter.com/SEz7CEoT4f</a></p>&mdash; La Plume Libre (@LPLdirect) <a href="https://twitter.com/LPLdirect/status/1251436987988561921?ref_src=twsrc%5Etfw">April 18, 2020</a></blockquote> 
-			<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> </li>
-		<li> Event 7: <blockquote class="twitter-tweet"><p lang="fr" dir="ltr">Le 1er tour des <a href="https://twitter.com/hashtag/municipales?src=hash&amp;ref_src=twsrc%5Etfw">#municipales</a> s’est tenu le 15 mars dans des conditions exceptionnelles, avec un taux d’abstention significatif mais dans des conditions rigoureuses de distanciation physique et d’hygiène. Merci aux assesseurs et aux équipes municipales qui l’ont rendu possible. 
-			<a href="https://t.co/is2yvRM2xo">pic.twitter.com/is2yvRM2xo</a></p>&mdash; Edouard Philippe (@EPhilippePM) <a href="https://twitter.com/EPhilippePM/status/1263783971814547456?ref_src=twsrc%5Etfw">May 22, 2020</a></blockquote>
-		 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></li>
-	
+<div class="informations-accueil">  
+
+<?php
+try
+{
+	$bdd = new PDO('mysql:host=localhost;dbname=WebSensor', 'root', 'root');
+}
+catch (Exception $e)
+{
+        die('Erreur : ' . $e->getMessage());
+
+}
+
+
+$reponse = $bdd->query('SELECT * FROM tweet');
+
+
+$donnees = $reponse->fetch();
+
+while ($donnees = $reponse->fetch())
+{
+
+?>
+
+<ul> <li style="margin-top=18px;"><span><?php echo $donnees['name']; ?></span>
+
+<blockquote class="twitter-tweet" lang="fr">
+   <p lang="fr" dir="ltr"><?php echo $donnees['tweet_text']; ?></p>&mdash; <?php echo $donnees['user_name']; ?> 
+	<a href="https://twitter.com/USER/status/TWEET_ID" data-datetime=DATE><?php echo $donnees['date']; ?></a>
+</blockquote>
+ <script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+</li>
 </ul>
+
+<?php
+}
+
+$reponse->closeCursor(); // Termine le traitement de la requête
+?>
+
 </div> 
 </div>
 
@@ -223,29 +236,48 @@ blockquote.twitter-tweet a:focus {
 </script>
 </div>
 </div>
+<?php
+try
+{
+	$bdd = new PDO('mysql:host=localhost;dbname=WebSensor', 'root', 'root');
+}
+catch (Exception $e)
+{
+        die('Erreur : ' . $e->getMessage());
+
+}
+
+
+$reponse_prediction = $bdd->query('SELECT * FROM prediction, event WHERE prediction.prediction_id = event.event_id');
+
+
+$donnees_prediction = $reponse_prediction->fetch();
+
+while ($donnees_prediction = $reponse_prediction->fetch())
+{
+
+?>
+
+
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
 		<h2> Prédictions pour la semaine prochaine : </h2>
 	<div class="informations-accueil">
 			<ol>
-				<li>Cornavirus</li>
-				<li>Déconfinement</li>
-				<li>Match de foot</li>
-				<li>Discourd du Président</li>
-				<li>Didier Raoult</li>
-				<li>Chine</li>
-				<li>Champions league</li>
-				<li>Stade de France</li>
-				<li>Coupe du monde</li>
-				<li>Vacances d'été</li>
+				<li><?php echo $donnees_prediction['name']; ?></li>			
 
 			</ol>
 	</div>
 </div>
+<?php
+}
+
+$reponse_prediction->closeCursor(); // Termine le traitement de la requête
+?>
 
 </div>
 </div>
 </div>
-
+-->
 </section>
 </div>
 

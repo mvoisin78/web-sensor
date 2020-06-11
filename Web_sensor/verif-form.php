@@ -1,7 +1,54 @@
 <?php
+session_start();
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Accueil</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style2.css">  
+
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>  
+</head>
+<body>
+<?php
+  require ('include/header.inc.php');
+  headWeb("Index","Gestion de l'apprentissage","home","index");
+?>
+
+ <div class="page">
+<section id="main">
+
+<div class="searchbar">
+                               
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+        <form action = "verif-form.php" method = "get">
+          <input class="form-control form-control-md mr-3 w-75" type="search" placeholder="Rechercher un event..." aria-label="Search" name="terme">
+          <input class="btn btn-default" type = "submit" name = "s" value = "Rechercher">
+        </form>
+</div>
+</div>
+
+</div>  
+
+
+
+</section>
+</div>
+
+
+<?php
 try
 {
- $bdd = new PDO("mysql:host=localhost;dbname=websensor", "root", "root");
+ $bdd = new PDO("mysql:host=localhost;dbname=WebSensor", "root", "root");
  $bdd ->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
 catch(Exception $e)
@@ -20,7 +67,10 @@ if (isset($_GET["s"]) AND $_GET["s"] == "Rechercher")
  if (isset($terme))
  {
   $terme = strtolower($terme);
-  $select_terme = $bdd->prepare("SELECT label, tweet FROM event WHERE label LIKE ? OR tweet LIKE ?");
+  //$select_terme = $bdd->prepare("SELECT label, tweet FROM event WHERE label LIKE ? OR tweet LIKE ?");
+    
+    $select_terme = $bdd->prepare("SELECT name, total_popularity FROM event WHERE name LIKE ? OR features_event LIKE ?");
+
   $select_terme->execute(array("%".$terme."%", "%".$terme."%"));
  }
  else
@@ -52,16 +102,11 @@ echo"<div class=\"informations-accueil\">";
 
   while($terme_trouve = $select_terme->fetch())
   {
-   echo "<div><h2>".$terme_trouve['label']."</h2>
-   <ul>
-     <li>Nom : </li>
-        <li>Catégorie :</li>
-        <li>Lieu : </li>
-        <li> Date : </li>
-        <li>Popularité : </li>
-        <li> Tweet Populaire : </li>
-   </ul>
-   <p> ".$terme_trouve['tweet']."</p>"
+   echo "<div><ul>
+   <li> <a href=\"popularite.php\">".$terme_trouve['name']."</a></li></ul>
+   <li> Popularité : ".$terme_trouve['total_popularity']."</li>
+   <li> Features : </li>
+   </ul>"
    ;
   }
   $select_terme->closeCursor();
