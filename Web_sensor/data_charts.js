@@ -1,4 +1,4 @@
-function getDataForGraphics(requestGraphicType){ //modif
+function getDataForGraphics(requestGraphicType){
 
 	var list = null;
 	var data_action;

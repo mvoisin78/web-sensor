@@ -152,7 +152,12 @@ margin-bottom: 15px
 }
 
 .informations-accueil ul {
- list-style-type: none;}
+ list-style-type: none;
+ padding-left:10px;
+ padding-right:10px;
+
+ }
+ 
 
 .accueil-graphique{
  

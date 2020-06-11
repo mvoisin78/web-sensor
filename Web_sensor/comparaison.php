@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 ?>
 
@@ -11,47 +11,42 @@ session_start();
   	<meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/style2.css">    
-      <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>  
+     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>  
 
-<style>
-
-blockquote.twitter-tweet {
-  display: inline-block;
-  font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
-  font-size: 12px;
-  font-weight: bold;
-  line-height: 16px;
-  border-color: #eee #ddd #bbb;
-  border-radius: 5px;
-  border-style: solid;
-  border-width: 1px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-  margin: 10px 5px;
-  padding: 0 16px 16px 16px;
-  max-width: 468px;
-}
-
-blockquote.twitter-tweet p {
-  font-size: 16px;
-  font-weight: normal;
-  line-height: 20px;
-}
-
-blockquote.twitter-tweet a {
-  color: inherit;
-  font-weight: normal;
-  text-decoration: none;
-  outline: 0 none;
-}
-
-blockquote.twitter-tweet a:hover,
-blockquote.twitter-tweet a:focus {
-  text-decoration: underline;
-}
-</style>
-
+	<style>
+	blockquote.twitter-tweet {
+		display: inline-block;
+		font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
+		font-size: 12px;
+		font-weight: bold;
+		line-height: 16px;
+		border-color: #eee #ddd #bbb;
+		border-radius: 5px;
+		border-style: solid;
+		border-width: 1px;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+		margin: 10px 5px;
+		padding: 0 16px 16px 16px;
+		max-width: 468px;
+	}
+	blockquote.twitter-tweet p {
+		font-size: 16px;
+		font-weight: normal;
+		line-height: 20px;
+	}
+	blockquote.twitter-tweet a {
+		color: inherit;
+		font-weight: normal;
+		text-decoration: none;
+		outline: 0 none;
+	}
+	blockquote.twitter-tweet a:hover,
+	blockquote.twitter-tweet a:focus {
+		text-decoration: underline;
+	}
+	</style>
 </head>
 <body>
 <?php
@@ -65,8 +60,7 @@ blockquote.twitter-tweet a:focus {
     <div class="container">
       <div class="row">
 
-<div class="col-md-6">
-     <h3>Visualiser et comparer des événments: </h3>
+<div class="col-md-4">
      <div class="informations-accueil">
       <h3> Liste d'events à comparer :</h3>
       <ul>
@@ -107,30 +101,48 @@ blockquote.twitter-tweet a:focus {
 
 </div> 
 
-<div class="col-md-6">
- <h3>Les graphiques de comparaison :</h3>
+<div class="col-md-8">
+ <h3>Graphique la popularité des events au cours du temps :</h3>
   <div class="accueil-graphique">
-  <div data-component-chartjs="" class="chartjs"
- data-chart="{&quot;type&quot;:&quot;line&quot;,&quot;data&quot;
-:{&quot;labels&quot;:[&quot;01/06&quot;,&quot;02/06&quot;,&quot;03/06&quot;,&quot;04/06&quot;,&quot;05/06&quot;,&quot;06/06&quot;,&quot;07/06&quot;,&quot;08/06&quot;,&quot;09/06&quot;,&quot;10/06&quot;]
-,&quot;datasets&quot;:[{&quot;data&quot;:[12,19,3,5,2,3],&quot;fill&quot;:false,&quot;borderColor&quot;:&quot;rgba(255, 99, 132, 0.2)&quot;},
-{&quot;fill&quot;:false,&quot;data&quot;:[3,15,7,4,19,12],&quot;borderColor&quot;:&quot;rgba(54, 162, 235, 0.2)&quot;}]}}"
-style="min-height:240px;min-width:240px;width:100%;height:100%;position:relative">  
+  <div id="linechart_comparison" class="chartjs" data-chart="">  
 
-<canvas class="chartjs-render-monitor" style="opacity: 1; float: none; font-family: &quot;Courier New&quot;; font-weight: 400; line-height: 24px; border-width: 1px; display: block; width: 920px; height: 460px;" width="920" height="460"></canvas>
-
+<canvas class="chartjs-render-monitor" style="font-family: 'Courier New'; font-weight: 400; line-height: 24px; border-width: 1px; display: block; width: 920px; height: 460px"></canvas>
      <!-- /container -->
   
 <script id="chartjs-script" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
 <script>
-       $(document).ready(function() {
-                 $(".chartjs").each(function () {
-                             ctx = $("canvas", this).get(0).getContext("2d");
-                             config = JSON.parse(this.dataset.chart);            
-                             chartjs = new Chart(ctx, config);         
-                           });       
-               });       
-       </script>
+	
+	var dataChart = {
+		'type':'line',
+		'data':{
+			'labels':['01/06','02/06','03/06','04/06','05/06','06/06','07/06','08/06','09/06','10/06'],
+			'datasets':[
+				{
+					'data':[12,19,3,5,2,3],
+					'fill':false,
+					'borderColor':'rgba(255, 99, 132, 0.5)'
+				},
+				{
+					'fill':false,
+					'data':[3,15,7,4,19,12],
+					'borderColor':'rgba(54, 162, 235, 0.5)'
+				}
+			]
+		}
+	};
+	document.getElementById("linechart_comparison").setAttribute("data-chart",dataChart);
+   $(document).ready(function() {
+			 $(".chartjs").each(function () {
+						 ctx = $("canvas", this).get(0).getContext("2d");
+						 config = (dataChart);            
+						 chartjs = new Chart(ctx, config);         
+					   });       
+		   });       
+</script>
+	   
+	   
+	   
+	   
 
 </div>
 </div>  

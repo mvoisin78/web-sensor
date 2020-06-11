@@ -1,26 +1,26 @@
 <?php
+if ($_GET['action'] != NULL){
 	$action = $_GET['action'];
-	$connexion2 = new PDO('pgsql:host=postgresql-websensor.alwaysdata.net;port=5432;dbname=websensor_2019;user=websensor;password=root');
-	$connexion = new PDO('mysql:host=localhost;dbname=websensor', 'root', 'root');
-	$resultset = $connexion->prepare("SELECT * FROM event");
-	$resultset->execute();
-	$count = $resultset->rowCount();
-	$dataTweet = array();
-	$tmpObj = array();
-	while ($row = $resultset->fetch(PDO::FETCH_ASSOC)) {
-		/*$tmpObj = [
-			'vector' => strval($row["vector"]),
-			'tweet_content' => strval($row["tweet_content"]),
-			'id_tweet' => strval($row["id_tweet"]),
-			'date' => strval($row["date"])
-		];*/
-		$tmpObj = [
-			'label' => strval($row["label"]),
-		];
-		array_push($dataTweet, $tmpObj);
-	}
-	echo json_encode($dataTweet, JSON_PRETTY_PRINT);
-	
+}
+
+header("content-type:application/json");
+try {
+    $pdo = new PDO('mysql:host=localhost;dbname=websensor', 'root', 'root', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+	$statement = $pdo->prepare("SELECT * FROM event");
+	$statement->execute();
+	$results = $statement->fetchAll(PDO::FETCH_ASSOC);
+	echo(json_encode($results));
+	/*
+	$json = array();
+	for($i=0; $i<count($results);$i++){
+		array_push($json,$results[$i]);
+    }
+	echo(json_encode($json));
+	*/
+} catch (PDOException $e) {
+    print "Error!: " . $e->getMessage() . "<br/>";
+    die();
+}
 ?>
 
 	
