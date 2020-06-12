@@ -14,10 +14,19 @@ session_start();
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/style2.css">  
 
-
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>  
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+	<script>
+	$( function() {
+		$( "#search_bar" ).autocomplete({
+			source: 'request_autocomplete.php'
+		});
+	});
+	</script>
 </head>
 <body>
 <?php
@@ -33,7 +42,7 @@ session_start();
 <div class="row">
   <div class="col-md-4 col-md-offset-4">
         <form action = "#" method = "get">
-          <input class="form-control form-control-md mr-3 w-75" type="search" placeholder="Rechercher un event..." aria-label="Search" name="terme">
+          <input id="search_bar" class="form-control form-control-md mr-3 w-75" type="text" placeholder="Rechercher un event..." aria-label="Search" name="terme">
           <input class="btn btn-default" type = "submit" name = "s" value = "Rechercher">
         </form>
 </div>
@@ -45,7 +54,7 @@ session_start();
 <?php
 try
 {
- $bdd = new PDO("mysql:host=localhost;dbname=WebSensor", "root", "root");
+ $bdd = new PDO("mysql:host=localhost;dbname=websensor", "root", "root");
  $bdd ->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
 catch(Exception $e)
@@ -61,40 +70,37 @@ if (isset($_GET["s"]) AND $_GET["s"] == "Rechercher")
  $terme = trim($terme); //pour supprimer les espaces dans la requête de l'internaute
  $terme = strip_tags($terme); //pour supprimer les balises html dans la requête
 
- if (isset($terme))
- {
+ if (isset($terme)){
   $terme = strtolower($terme);
   //$select_terme = $bdd->prepare("SELECT label, tweet FROM event WHERE label LIKE ? OR tweet LIKE ?");
     
     $select_terme = $bdd->prepare("SELECT name, total_popularity FROM event WHERE name LIKE ? OR features_event LIKE ?");
 
-  $select_terme->execute(array("%".$terme."%", "%".$terme."%"));
+	$select_terme->execute(array("%".$terme."%", "%".$terme."%"));
+  
+  
+	$terme = $select_terme->fetchall();
+
+	$_SESSION['recherche']= $terme;
+	$_SESSION['rechercheList']= [];
+	
+	foreach ($terme as $terme_trouve  ) {
+		$_SESSION['rechercheList'][$terme_trouve['name']]=$terme_trouve;
+		echo"<div class=\"informations-accueil\">";
+		echo "<div ><ul>
+			<li> <a href=\"popularite.php?nameevent=".$terme_trouve['name']."\">".$terme_trouve['name']. "</a></li></ul>
+			<li> Popularité : ".$terme_trouve['total_popularity']."</li>
+			<li> Tweet populaire : </li>
+		</ul>
+		</div></div>";
+  }
+  $select_terme->closeCursor();
  }
  else
  {
   $message = "Vous devez entrer votre requete dans la barre de recherche";
  }
 }
-
-$terme = $select_terme->fetchall();
-
-$_SESSION['recherche']= $terme;
-$_SESSION['rechercheList']= [];
-
-  foreach ($terme as $terme_trouve  ) {
-  $_SESSION['rechercheList'][$terme_trouve['name']]=$terme_trouve;
-  echo  $_SESSION['rechercheList'][$terme_trouve['name']]['name'];
-   echo"<div class=\"informations-accueil\">";
-   echo "<div ><ul>
-   <li> <a href=\"popularite.php?nameevent=".$terme_trouve['name']."\">".$terme_trouve['name']. "</a></li></ul>
-   <li> Popularité : ".$terme_trouve['total_popularity']."</li>
-   <li> Tweet populaire : </li>
-   </ul>
-   </div></div>"
-   ;
-  }
-  $select_terme->closeCursor();
-
    ?>
 </section>
 </div>

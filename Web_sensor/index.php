@@ -122,9 +122,8 @@ session_start();
 			<div id="piechart" class="accueil-graphique">
 			  <!-- pdo/sql_request.php -> data_charts.js -> index.php -->
 				<script type="text/javascript">
-				dataTestSQL = getDataForGraphics("lineChart");
+				dataTestSQL = getDataForGraphics("piechart");
 				console.log(dataTestSQL);
-
 
 				//PIECHART
 

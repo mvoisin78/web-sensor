@@ -5,19 +5,19 @@ function getDataForGraphics(requestGraphicType){
 	
 	switch(requestGraphicType){
 	
-		case "lineChart" :
+		case "linechart" :
 			data_action = "action=getDataLine";
 			break;
 			
-		case "bubbleChart":
-			data_action = "action=getDataBubble";
+		case "piechart" :
+			data_action = "action=getDataPie";
 			break;
-			
+
 		default :
 			alert("Le type de graphique n'est pas renseigné dans le function getDataForGraphics");
 			data_action = "action=getDataLine";
 	}
-	
+	console.log(data_action);
 	$.ajax({
 		method : "GET",
 		url : 'pdo/sql_request.php',
@@ -40,7 +40,7 @@ function getDataForGraphics(requestGraphicType){
 		} catch (err) {
 			msg = data.responseText;
 		}
-		alert(msg);
+		alert("Erreur : " + msg);
 	});
 	return list;
 }
