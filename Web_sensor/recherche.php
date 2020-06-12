@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-$_SESSION['terme'];
 
 ?>
 
@@ -77,15 +76,17 @@ if (isset($_GET["s"]) AND $_GET["s"] == "Rechercher")
  }
 }
 
+$terme = $select_terme->fetchall();
 
+$_SESSION['recherche']= $terme;
+$_SESSION['rechercheList']= [];
 
-
-
-  while($terme_trouve = $select_terme->fetch())
-  {
-    echo"<div class=\"informations-accueil\">";
+  foreach ($terme as $terme_trouve  ) {
+  $_SESSION['rechercheList'][$terme_trouve['name']]=$terme_trouve;
+  echo  $_SESSION['rechercheList'][$terme_trouve['name']]['name'];
+   echo"<div class=\"informations-accueil\">";
    echo "<div ><ul>
-   <li> <a href=\"popularite.php\">".$terme_trouve['name']."</a></li></ul>
+   <li> <a href=\"popularite.php?nameevent=".$terme_trouve['name']."\">".$terme_trouve['name']. "</a></li></ul>
    <li> Popularité : ".$terme_trouve['total_popularity']."</li>
    <li> Tweet populaire : </li>
    </ul>
@@ -93,7 +94,6 @@ if (isset($_GET["s"]) AND $_GET["s"] == "Rechercher")
    ;
   }
   $select_terme->closeCursor();
-
 
    ?>
 </section>

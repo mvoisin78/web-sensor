@@ -57,17 +57,23 @@ if (isset($_GET["s"]) AND $_GET["s"] == "Rechercher")
   $message = "Vous devez entrer votre requete dans la barre de recherche";
  }
 }
+
 ?>
+
 <div class="container-fluid">
   <div class="container"> 
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
       <h3>Informations sur l'event :</h3>
 <?php
-	
-echo"<div class=\"informations-accueil\">
+echo"<div class=\"informations-accueil\">";
 
-      <ul style=\"margin-top:10px;\">         
+$terme_trouve=[];
+$terme_trouve = $_SESSION['rechercheList'][$_GET['nameevent']];
+
+
+
+      echo"<ul style=\"margin-top:10px;\">         
         <li>Nom : ".$terme_trouve['name']." </li>
         <li>Popularité : ".$terme_trouve['total_popularity']."</li>
         <li> Tweet Populaire :
@@ -79,8 +85,9 @@ echo"<div class=\"informations-accueil\">
 <script src=\"//platform.twitter.com/widgets.js=\" charset==\"utf-8=\"></script>
 
          </li>
-      </ul>
-    </div>
+      </ul>";
+    
+   echo" </div>
 
 
 </section>
