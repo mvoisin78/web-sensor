@@ -61,19 +61,19 @@ session_start();
       <div class="row">
 
 <div class="col-md-4">
+	<h3> Liste d'events à comparer :</h3>
      <div class="informations-accueil">
-      <h3> Liste d'events à comparer :</h3>
-      <ul>
+      <ul style="margin-top:10px;">
         <li>event n°1 : Coupe du monde</li>
         <li>event n°2 :Coupe d'Europe </li>
     
       </ul>
      </div>
-     
-     <div class="informations-accueil">
-          <h3>Informations sur l'event :</h3>
+      <h3>Informations sur l'event :</h3>
 
-      <ul>
+     <div class="informations-accueil">
+
+      <ul style="margin-top:10px;">
         <li>Nom : Coupe du monde </li>
         <li>Popularité : 450958 </li>
         <li> Tweet Populaire :<blockquote class="twitter-tweet" lang="fr">

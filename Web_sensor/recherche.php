@@ -79,20 +79,22 @@ if (isset($_GET["s"]) AND $_GET["s"] == "Rechercher")
 
 
 
-echo"<div class=\"informations-accueil\">";
+
 
   while($terme_trouve = $select_terme->fetch())
   {
-   echo "<div><ul>
+    echo"<div class=\"informations-accueil\">";
+   echo "<div ><ul>
    <li> <a href=\"popularite.php\">".$terme_trouve['name']."</a></li></ul>
    <li> Popularité : ".$terme_trouve['total_popularity']."</li>
    <li> Tweet populaire : </li>
-   <li> Features : </li>
-   </ul>"
+   </ul>
+   </div></div>"
    ;
   }
   $select_terme->closeCursor();
-  echo"</div>";
+
+
    ?>
 </section>
 </div>

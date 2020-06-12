@@ -5,6 +5,11 @@ html {
     position: relative;
     min-height: 100%;
 }
+.logo{
+width: 25px;
+height: 25px;
+
+}
 
 body {
   background-color: #f1f2f6;
@@ -16,7 +21,7 @@ body {
   /*width: 780px; */
   font-family: "Times New Roman", Times, serif;
   font-size: 16px;
-  border: 2px solid #00acee;;
+  border: 2px solid #1873A1;
   border-radius: 5px;
   box-shadow: 2px 4px 3px black;
   background-color: white;
@@ -24,8 +29,8 @@ body {
   padding-left: 10px;
   padding-top: 20px;
   opacity: .8;
-  margin-left: 120px;
-  margin-right: 120px;
+  margin-left: 100px;
+  margin-right: 100px;
   margin-bottom: 30px;
   margin-top: 30px;
  padding-bottom:100px;

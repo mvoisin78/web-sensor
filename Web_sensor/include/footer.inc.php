@@ -1,6 +1,7 @@
 <?php
 	function foot(){
-	echo"<footer class=\"page-footer font-small blue pt-4\">";
+	echo"<footer class=\"page-footer font-small blue pt-4\" style=\"background-color : #1873A1; color: white; border-radius: 10px;  margin-left: 100px;
+  margin-right: 100px;\">";
   	echo"<div class=\"container-fluid text-center text-md-left\">";
 
     echo"<div class=\"row\">
@@ -10,12 +11,13 @@
 
         <!-- Content -->
         <h5 class=\"text-uppercase\">à propos</h5>
-        <p>Here you can use rows and columns to organize your footer content.</p>
+        <p> Nous sommes un groupe de 4 étudiants à</bR> l'Université de Cergy-Pontoise.
+         On a réalisé notre projet
+        s'intitulant Web Sensor.</p>
 
       </div>
       <!-- Grid column -->
 
-      <hr class=\"clearfix w-100 d-md-none pb-3\">
 
       <!-- Grid column -->
       <div class=\"col-md-3 mb-md-0 mb-3\">
@@ -25,16 +27,16 @@
 
         <ul class=\"list-unstyled\">
           <li>
-            <a href=\"#!\"> Lydia KHELFANE</a>
+      Lydia KHELFANE
           </li>
           <li>
-            <a href=\"#!\">Gabriel CHEVALIER</a>
+            Gabriel CHEVALIER
           </li>
           <li>
-            <a href=\"#!\">Mathieu VOISIN</a>
+           Mathieu VOISIN
           </li>
           <li>
-            <a href=\"#!\">Martin GUILBERT</a>
+          Martin GUILBERT
           </li>
         </ul>
 
@@ -49,13 +51,13 @@
 
         <ul class=\"list-unstyled\">
           <li>
-            <a href=\"#!\">Dimitris KOTZINOS</a>
+         Dimitris KOTZINOS
           </li>
           <li>
-            <a href=\"#!\">Wassim SWAILAH </a>
+           Wassim SWAILAH 
           </li>
           <li>
-            <a href=\"#!\">Tianxiao LIU</a>
+            <a href=\"https://depinfo.u-cergy.fr/~tliu/\">Tianxiao LIU</a>
           </li>
           </ul>
 
@@ -67,7 +69,7 @@
 
   </div> ";
 
- 	echo"<div class=\"footer-copyright text-center py-3\">© 2020 Copyright:
+ 	echo"<div class=\"footer-copyright text-center py-3\" style=\"margin: 5%;\">© 2020 Copyright:
     <a href=\"index.php/\"> Web Sensor</a>
   </div>";
 	echo"</footer>";

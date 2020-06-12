@@ -82,17 +82,26 @@ session_start();
 			catch (Exception $e){
 				die('Erreur : ' . $e->getMessage());
 			}
-			//SELECT * FROM popularity WHERE date = " " FETCH FIRST 10 ROW ONLY ORDER BY daily_popularity;
+			//GROUP BY name ---- ca c pr o cas uy a des douSELECT * FROM popularity WHERE date = " " FETCH FIRST 10 ROW ONLY ORDER BY daily_popularity;
 
-			$reponse = $bdd->query('SELECT * FROM popularity INNER join event ON popularity.event_id = event.event_id INNER join tweet ON tweet.tweet_id=popularity.tweet_id ');
-			$donnees = $reponse->fetch();
+			$reponse = $bdd->query('SELECT DISTINCT * 
+										FROM popularity 
+										INNER join event ON popularity.event_id = event.event_id 
+										INNER join tweet ON tweet.tweet_id=popularity.tweet_id  
+										WHERE popularity_date = CURDATE()
+										ORDER BY popularity.number desc 
+										LIMIT 10
+										');
+			
 			while ($donnees = $reponse->fetch()){
 			?>
+		
 				<ul> 
-					<li style="margin-top=18px;"><span><?php echo $donnees['name']; ?></span>
+					<li style="margin-top=18px;"><h4 style = "color:#1873A1"><a href="https://twitter.com"><img class="logo"src="/img/logo.png"
+     alt="logo twitter"></a><?php echo $donnees['name']; ?></h4>
 						<blockquote class="twitter-tweet" lang="fr">
 							<p lang="fr" dir="ltr"><?php echo $donnees['tweet_text']; ?></p>&mdash; <?php echo $donnees['user_name']; ?> 
-							<a href="https://twitter.com/USER/status/TWEET_ID" data-datetime=DATE><?php echo $donnees['date']; ?></a>
+							<a href="https://twitter.com/USER/status/TWEET_ID" data-datetime=DATE><?php echo $donnees['popularity_date']; ?></a>
 						</blockquote>
 						<script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 					</li>
@@ -179,6 +188,10 @@ session_start();
 			  </script>
 			</div>
 		</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+			<h2> Prédictions pour la semaine prochaine : </h2>
+			<div class="informations-accueil">
+					
 		<?php
 		try
 		{
@@ -191,7 +204,7 @@ session_start();
 		}
 
 
-		$reponse_prediction = $bdd->query('SELECT * FROM prediction, event WHERE prediction.prediction_id = event.event_id');
+		$reponse_prediction = $bdd->query('SELECT * FROM prediction, event WHERE prediction.event_id = event.event_id');
 
 
 		$donnees_prediction = $reponse_prediction->fetch();
@@ -199,20 +212,18 @@ session_start();
 		while ($donnees_prediction = $reponse_prediction->fetch())
 		{
 		?>
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
-			<h2> Prédictions pour la semaine prochaine : </h2>
-			<div class="informations-accueil">
-				<ol>
+	
+				<ul>
 					<li><?php echo $donnees_prediction['name']; ?></li>
 
-				</ol>
-			</div>
-		</div>
+				</ul>
+		
 		<?php
 		}
 		$reponse_prediction->closeCursor(); // Termine le traitement de la requête
 		?>
-
+	</div>
+		</div>
 	</div>
 	</div>
 	</div>

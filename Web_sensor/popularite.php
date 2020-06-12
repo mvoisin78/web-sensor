@@ -58,14 +58,16 @@ if (isset($_GET["s"]) AND $_GET["s"] == "Rechercher")
  }
 }
 ?>
-
+<div class="container-fluid">
+  <div class="container"> 
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+      <h3>Informations sur l'event :</h3>
 <?php
 	
+echo"<div class=\"informations-accueil\">
 
-echo"<div class=\"page\">";
-echo"<section id=\"main\">";
-echo"<div class=\"event-description\">
-      <ul> Informations sur l'event :
+      <ul style=\"margin-top:10px;\">         
         <li>Nom : ".$terme_trouve['name']." </li>
         <li>Popularité : ".$terme_trouve['total_popularity']."</li>
         <li> Tweet Populaire :
@@ -82,6 +84,10 @@ echo"<div class=\"event-description\">
 
 
 </section>
+</div>
+</div>
+</div>
+</div>
 </div>";
 ?>
 <?php
