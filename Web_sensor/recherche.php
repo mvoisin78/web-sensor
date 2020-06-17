@@ -27,6 +27,39 @@ session_start();
 		});
 	});
 	</script>
+	<style>
+blockquote.twitter-tweet {
+		  display: inline-block;
+		  font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
+		  font-size: 12px;
+		  font-weight: bold;
+		  line-height: 16px;
+		  border-color: #eee #ddd #bbb;
+		  border-radius: 5px;
+		  border-style: solid;
+		  border-width: 1px;
+		  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+		  margin: 10px 5px;
+		  padding: 0 16px 16px 16px;
+		  max-width: 468px;
+		}
+		blockquote.twitter-tweet p {
+		  font-size: 16px;
+		  font-weight: normal;
+		  line-height: 20px;
+		}
+		blockquote.twitter-tweet a {
+		  color: inherit;
+		  font-weight: normal;
+		  text-decoration: none;
+		  outline: 0 none;
+		}
+		blockquote.twitter-tweet a:hover,
+		blockquote.twitter-tweet a:focus {
+		  text-decoration: underline;
+		}
+
+	</style>
 </head>
 <body>
 <?php
@@ -54,7 +87,7 @@ session_start();
 <?php
 try
 {
- $bdd = new PDO("mysql:host=localhost;dbname=websensor", "root", "root");
+ $bdd = new PDO("mysql:host=localhost;dbname=websensor16", "root", "root");
  $bdd ->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
 catch(Exception $e)
@@ -74,7 +107,15 @@ if (isset($_GET["s"]) AND $_GET["s"] == "Rechercher")
   $terme = strtolower($terme);
   //$select_terme = $bdd->prepare("SELECT label, tweet FROM event WHERE label LIKE ? OR tweet LIKE ?");
     
-    $select_terme = $bdd->prepare("SELECT name, total_popularity FROM event WHERE name LIKE ? OR features_event LIKE ?");
+    $select_terme = $bdd->prepare("SELECT DISTINCT * 
+										FROM event 
+										INNER join popularity ON popularity.event_id = event.event_id 
+										INNER join tweet ON tweet.tweet_id=popularity.tweet_id 
+    								WHERE popularity_date ='2020-02-23 00:00:00' And name LIKE ? OR features_event LIKE ?  
+
+    								");
+    											
+										
 
 	$select_terme->execute(array("%".$terme."%", "%".$terme."%"));
   
@@ -90,7 +131,12 @@ if (isset($_GET["s"]) AND $_GET["s"] == "Rechercher")
 		echo "<div ><ul>
 			<li> <a href=\"popularite.php?nameevent=".$terme_trouve['name']."\">".$terme_trouve['name']. "</a></li></ul>
 			<li> Popularité : ".$terme_trouve['total_popularity']."</li>
-			<li> Tweet populaire : </li>
+			<li> Tweet populaire : <blockquote class=\"twitter-tweet\" lang=\"fr\">
+  <p>".$terme_trouve['tweet_text']."</p>&mdash;
+  ".$terme_trouve['user_name']." <a href=\"https://twitter.com/USER/status/TWEET_ID\" 
+  data-datetime=DATE>".$terme_trouve['popularity_date']."</a>
+</blockquote>
+<script src=\"//platform.twitter.com/widgets.js=\" charset==\"utf-8=\"></script></li>
 		</ul>
 		</div></div>";
   }

@@ -57,7 +57,7 @@
            Wassim SWAILAH 
           </li>
           <li>
-            <a href=\"https://depinfo.u-cergy.fr/~tliu/\">Tianxiao LIU</a>
+            Tianxiao LIU
           </li>
           </ul>
 

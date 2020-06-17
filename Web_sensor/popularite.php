@@ -12,8 +12,11 @@ session_start();
     <link rel="stylesheet" type="text/css" href="css/style2.css">  
 
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>    
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>  
+
+  <script src="data_charts.js" type="text/javascript"></script>
+
 </head>
 <body>
 
@@ -27,7 +30,7 @@ session_start();
 <?php
 try
 {
- $bdd = new PDO("mysql:host=localhost;dbname=WebSensor", "root", "root");
+ $bdd = new PDO("mysql:host=localhost;dbname=websensor16", "root", "root");
  $bdd ->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
 catch(Exception $e)
@@ -48,7 +51,12 @@ if (isset($_GET["s"]) AND $_GET["s"] == "Rechercher")
   $terme = strtolower($terme);
   //$select_terme = $bdd->prepare("SELECT label, tweet FROM event WHERE label LIKE ? OR tweet LIKE ?");
     
-    $select_terme = $bdd->prepare("SELECT name, total_popularity FROM event WHERE name LIKE ? OR features_event LIKE ?");
+    $select_terme = $bdd->prepare("SELECT DISTINCT * 
+                    FROM event 
+                    INNER join popularity ON popularity.event_id = event.event_id 
+                    INNER join tweet ON tweet.tweet_id=popularity.tweet_id 
+                    WHERE popularity_date ='2020-02-23 00:00:00' And name LIKE ? OR features_event LIKE ?  
+");
 
   $select_terme->execute(array("%".$terme."%", "%".$terme."%"));
  }
@@ -78,16 +86,29 @@ $terme_trouve = $_SESSION['rechercheList'][$_GET['nameevent']];
         <li>Popularité : ".$terme_trouve['total_popularity']."</li>
         <li> Tweet Populaire :
 <blockquote class=\"twitter-tweet\" lang=\"fr\">
-  <p>".$terme_trouve['name']."</p>&mdash;
-  ".$terme_trouve['name']." <a href=\"https://twitter.com/USER/status/TWEET_ID\" 
-  data-datetime=DATE>".$terme_trouve['name']."</a>
+  <p>".$terme_trouve['tweet_text']."</p>&mdash;
+  ".$terme_trouve['user_name']." <a href=\"https://twitter.com/USER/status/TWEET_ID\" 
+  data-datetime=DATE>".$terme_trouve['popularity_date']."</a>
 </blockquote>
 <script src=\"//platform.twitter.com/widgets.js=\" charset==\"utf-8=\"></script>
 
          </li>
       </ul>";
     
-   echo" </div>
+   echo" </div>";
+   ?>
+<canvas id="myChart" style="max-width: 500px;"></canvas>
+<div>
+  
+ 
+<div data-component-chartjs="" class="chartjs" data-chart="{&quot;type&quot;:&quot;line&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Red&quot;,&quot;Blue&quot;,&quot;Yellow&quot;,&quot;Green&quot;,&quot;Purple&quot;,&quot;Orange&quot;],&quot;datasets&quot;:[{&quot;data&quot;:[12,19,3,5,2,3],&quot;fill&quot;:false,&quot;borderColor&quot;:&quot;rgba(255, 99, 132, 0.2)&quot;},{&quot;fill&quot;:false,&quot;data&quot;:[3,15,7,4,19,12],&quot;borderColor&quot;:&quot;rgba(54, 162, 235, 0.2)&quot;}]}}" style="min-height:240px;min-width:240px;width:100%;height:100%;position:relative">        <canvas width="975" height="487" class="chartjs-render-monitor" style="display: block; width: 975px; height: 487px;"></canvas>      </div>
+
+     <!-- /container -->
+  
+
+<script id="chartjs-script" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script><script>       $(document).ready(function() {          $(".chartjs").each(function () {            ctx = $("canvas", this).get(0).getContext("2d");            config = JSON.parse(this.dataset.chart);            chartjs = new Chart(ctx, config);         });       });       </script>
+
+   </div>
 
 
 </section>

@@ -77,7 +77,7 @@ session_start();
 			<div class="informations-accueil">  
 			<?php
 			try{
-				$bdd = new PDO('mysql:host=localhost;dbname=WebSensor', 'root', 'root',  array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+				$bdd = new PDO('mysql:host=localhost;dbname=websensor16', 'root', 'root',  array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 			}
 			catch (Exception $e){
 				die('Erreur : ' . $e->getMessage());
@@ -88,8 +88,7 @@ session_start();
 										FROM popularity 
 										INNER join event ON popularity.event_id = event.event_id 
 										INNER join tweet ON tweet.tweet_id=popularity.tweet_id  
-										WHERE popularity_date = CURDATE()
-										ORDER BY popularity.number desc 
+										WHERE popularity_date = "2020-02-25 00:00:00"									ORDER BY popularity.number desc 
 										LIMIT 10
 										');
 			
@@ -194,7 +193,7 @@ session_start();
 		<?php
 		try
 		{
-			$bdd = new PDO('mysql:host=localhost;dbname=WebSensor', 'root', 'root');
+			$bdd = new PDO('mysql:host=localhost;dbname=webSensor16', 'root', 'root');
 		}
 		catch (Exception $e)
 		{
@@ -206,7 +205,6 @@ session_start();
 		$reponse_prediction = $bdd->query('SELECT * FROM prediction, event WHERE prediction.event_id = event.event_id');
 
 
-		$donnees_prediction = $reponse_prediction->fetch();
 
 		while ($donnees_prediction = $reponse_prediction->fetch())
 		{
