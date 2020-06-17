@@ -19,13 +19,58 @@ session_start();
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	
 
 	<script>
 	$( function() {
 		$( "#search_bar" ).autocomplete({
-			source: 'request_autocomplete.php'
+
+		  source: function( request, response ) {
+			$.ajax({
+			  url: "request_autocomplete.php",
+			  type:'post',
+			  dataType: "json",
+			  data: {
+				term: request.term
+			  },
+			  success: function( data ) {
+				response( data );
+			  }
+			});
+		  },
+		  minLength: 3,
+		  select: function( event, ui ) {
+			log( ui.item ?
+			  "Selected: " + ui.item.label :
+			  "Nothing selected, input was " + this.value);
+		  },
+		  open: function() {
+			$( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+		  },
+		  close: function() {
+			$( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+		  }
+			/*
+			//source: 'request_autocomplete.php'
+			source: function( request, response ) {
+				var searchText = extractLast(request.term);
+				$.ajax({
+					url: "request_autocomplete.php",
+					type:'post',
+					dataType: "json",
+					data: {
+						search: searchText
+					},
+					success: function( data ) {
+						response( data );
+					}
+				});
+			},
+			minLength: 3
+			*/
 		});
 	});
+  
 	</script>
 	<style>
 blockquote.twitter-tweet {
