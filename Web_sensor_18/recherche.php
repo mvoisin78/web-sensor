@@ -19,9 +19,42 @@ session_start();
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-	
+	<style>
+		blockquote.twitter-tweet {
+		  display: inline-block;
+		  font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
+		  font-size: 12px;
+		  font-weight: bold;
+		  line-height: 16px;
+		  border-color: #eee #ddd #bbb;
+		  border-radius: 5px;
+		  border-style: solid;
+		  border-width: 1px;
+		  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+		  margin: 10px 5px;
+		  padding: 0 16px 16px 16px;
+		  max-width: 468px;
+		}
+		blockquote.twitter-tweet p {
+		  font-size: 16px;
+		  font-weight: normal;
+		  line-height: 20px;
+		}
+		blockquote.twitter-tweet a {
+		  color: inherit;
+		  font-weight: normal;
+		  text-decoration: none;
+		  outline: 0 none;
+		}
+			blockquote.twitter-tweet a:hover,
+			blockquote.twitter-tweet a:focus {
+		  text-decoration: underline;
+		}
 
+	</style>
 	<script>
+	
+	/*
 	$( function() {
 		$( "#search_bar" ).autocomplete({
 
@@ -50,6 +83,7 @@ session_start();
 		  close: function() {
 			$( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
 		  }
+		  */
 			/*
 			//source: 'request_autocomplete.php'
 			source: function( request, response ) {
@@ -67,44 +101,11 @@ session_start();
 				});
 			},
 			minLength: 3
-			*/
+			
 		});
 	});
-  
+  */
 	</script>
-	<style>
-blockquote.twitter-tweet {
-		  display: inline-block;
-		  font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
-		  font-size: 12px;
-		  font-weight: bold;
-		  line-height: 16px;
-		  border-color: #eee #ddd #bbb;
-		  border-radius: 5px;
-		  border-style: solid;
-		  border-width: 1px;
-		  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-		  margin: 10px 5px;
-		  padding: 0 16px 16px 16px;
-		  max-width: 468px;
-		}
-		blockquote.twitter-tweet p {
-		  font-size: 16px;
-		  font-weight: normal;
-		  line-height: 20px;
-		}
-		blockquote.twitter-tweet a {
-		  color: inherit;
-		  font-weight: normal;
-		  text-decoration: none;
-		  outline: 0 none;
-		}
-		blockquote.twitter-tweet a:hover,
-		blockquote.twitter-tweet a:focus {
-		  text-decoration: underline;
-		}
-
-	</style>
 </head>
 <body>
 <?php
@@ -132,7 +133,7 @@ blockquote.twitter-tweet {
 <?php
 try
 {
- $bdd = new PDO("mysql:host=localhost;dbname=websensor16", "root", "root");
+ $bdd = new PDO("mysql:host=localhost;dbname=websensor17", "root", "root");
  $bdd ->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
 catch(Exception $e)
@@ -156,7 +157,7 @@ if (isset($_GET["s"]) AND $_GET["s"] == "Rechercher")
                                         FROM event 
                                         INNER join popularity ON popularity.event_id = event.event_id 
                                         INNER join tweet ON tweet.tweet_id=popularity.tweet_id 
-                                    WHERE popularity_date ='2020-02-25' And (name LIKE ? OR features_event LIKE ?)
+                                    WHERE popularity_date ='2020-02-25' And (name LIKE ? OR features_event LIKE ?) and event.name != ''
     								");
     											
 										

@@ -88,21 +88,25 @@ session_start();
 										FROM popularity 
 										INNER join event ON popularity.event_id = event.event_id 
 										INNER join tweet ON tweet.tweet_id=popularity.tweet_id  
-										WHERE popularity_date = "2020-02-25" AND event.name != ""
+										WHERE popularity_date = "2020-02-25 00:00:00" AND event.name != ""
 										ORDER BY popularity.number desc 
 										LIMIT 10
 										');
 			
 			while ($donnees = $reponse->fetch()){
+			/*
+					<li>
+					<blockquote class="twitter-tweet"><p lang="fr" dir="ltr"><?php echo $donnees['tweet_text']; ?></p>&mdash; <?php echo $donnees['user_name']." (@".$donnees['user'].")" ?> <a href="https://twitter.com/<?php echo $donnees['user']?>/status/<?php echo $donnees['tweet_id']?>"><?php echo $donnees['date']?></a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+					</li>
+					
+					*/
 			?>
 		
 				<ul>
-					<li style="margin-top=18px;"><h4 style = "color:#1873A1"><img style="margin-bottom:0px" class="logo"src="img/logo.png" alt="logo twitter"><a href="https://twitter.com/<?php echo($donnees['user']."/status/".$donnees['tweet_id'])?>"><?php echo(" ".$donnees['name']); ?></a>
-						</h4>
+					<li style="margin-top=18px;"><h4 style = "color:#1873A1"><img style="margin-bottom:0px" class="logo"src="img/logo.png" alt="logo twitter"><?php echo(" ".$donnees['name']); ?></h4>
 						<blockquote class="twitter-tweet">
 							<p lang="fr" dir="ltr"><?php echo $donnees['tweet_text']; ?></p>&mdash; <?php echo $donnees['user_name']." (@".$donnees['user'].")" ?> 
-							<a><?php $date=explode(" ", $donnees['popularity_date']);
-							 echo $date[0] ;?></a>
+							<a href="https://twitter.com/<?php echo($donnees['user']."/status/".$donnees['tweet_id'])?>"><?php echo $donnees['popularity_date']; ?></a>
 						</blockquote>
 					</li>
 					
@@ -177,11 +181,10 @@ session_start();
 
 				g.append("text")
 					.attr("transform", function(d) { return "translate(" + labelArc.centroid(d) + ")"; })
-					//.text(function(d) { return d.data; })
+					.text(function(d) { return d.data; })
 					.attr("dy", "1em");
 				g.append("text")
 					.attr("transform", function(d) { return "translate(" + labelArc.centroid(d) + ")"; })
-					//.attr("text-anchor","middle")
 					.text(function(d) { return label_list[d.index]; })
 					.attr("dy", "0em");
 
@@ -191,58 +194,37 @@ session_start();
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
 			<h2> Prédiction du classement pour demain : </h2>
 			<div class="informations-accueil">
-				<div class="row">
-				
-				<div class="col-md-6 col-lg-6">
-				<?php
-					try
-					{
-						$bdd = new PDO('mysql:host=localhost;dbname=websensor17', 'root', 'root');
-					}
-					catch (Exception $e)
-					{
-						die('Erreur : ' . $e->getMessage());
-					}
-					$actual_date = "2020-02-25";
-					$reponse_prediction2 = $bdd->query("SELECT * FROM event,popularity WHERE event.name != '' AND popularity.popularity_date = \"".$actual_date."\" AND event.event_id = popularity.event_id ORDER BY popularity.number desc LIMIT 10");
-					$index = 1;
-					echo"<h3>Aujourd'hui :</h3>";
-					while ($donnees_prediction = $reponse_prediction2->fetch()){
-						echo("<ul><li>".$index." : ".$donnees_prediction['name']."</li><li></li></ul>");
-						$index = $index + 1;
-					}
-					$reponse_prediction2->closeCursor(); // Termine le traitement de la requête
-					echo("
-				</div>
-				
-				<div class=\"col-md-6 col-lg-6\">");
-					try
-					{
-						$bdd = new PDO('mysql:host=localhost;dbname=websensor17', 'root', 'root');
-					}
-					catch (Exception $e)
-					{
-							die('Erreur : ' . $e->getMessage());
-
-					}
-					$reponse_prediction = $bdd->query("SELECT * FROM prediction,event,popularity WHERE prediction.event_id = event.event_id AND popularity.event_id=event.event_id AND popularity.popularity_date = \"".$actual_date."\" ORDER BY prediction.pnumber desc LIMIT 10");
-					$index = 1;
 					
-					echo"<h3>Demain :</h3>";
-					while ($donnees_prediction = $reponse_prediction->fetch()){
-						$valueGrow = (($donnees_prediction['pnumber'] - $donnees_prediction['number'])*100/ $donnees_prediction['number']);
-						if(intval($valueGrow) > 0){
-						echo("<ul><li>".$index." : ".$donnees_prediction['name']."   +".intval($valueGrow)."%</li></ul>");
-						}
-						else{
-							echo("<ul><li>".$index." : ".$donnees_prediction['name']."   ".intval($valueGrow)."%</li></ul>");
-						}
-						$index = $index + 1;
-					}
-					$reponse_prediction->closeCursor(); // Termine le traitement de la requête
-				?>
-				</div>
-			</div>
+		<?php
+		try
+		{
+			$bdd = new PDO('mysql:host=localhost;dbname=websensor17', 'root', 'root');
+		}
+		catch (Exception $e)
+		{
+				die('Erreur : ' . $e->getMessage());
+
+		}
+
+
+		$reponse_prediction = $bdd->query('SELECT * FROM prediction, event WHERE prediction.event_id = event.event_id');
+
+
+
+		while ($donnees_prediction = $reponse_prediction->fetch())
+		{
+		?>
+	
+				<ul>
+					<li><?php echo $donnees_prediction['name']; ?></li>
+
+				</ul>
+		
+		<?php
+		}
+		$reponse_prediction->closeCursor(); // Termine le traitement de la requête
+		?>
+	</div>
 		</div>
 	</div>
 	</div>

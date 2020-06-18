@@ -1,4 +1,4 @@
-function getDataForGraphics(requestGraphicType, date_from, date_to){
+function getDataForGraphics(requestGraphicType, actual_date, event_id){
 
 	var list = null;
 	var data_action;
@@ -22,7 +22,7 @@ function getDataForGraphics(requestGraphicType, date_from, date_to){
 		method : "GET",
 		url : 'pdo/sql_request.php',
 		async : false,
-		data : {action: data_action, date_from: date_from, date_to: date_to},
+		data : {action: data_action, actual_date: actual_date, event_id: event_id},
 		dataType : "json",
 		accepts : "application/json; charset=utf-8",
 	}).done(function(data) {

@@ -47,8 +47,8 @@ session_start();
 		text-decoration: underline;
 	}
 	.check-event p{
-	margin-block-start: 0em;
-    margin-block-end: 0em;"
+		margin-block-start: 0em;
+		margin-block-end: 0em;"
 	}
 	</style>
 </head>
@@ -77,18 +77,19 @@ session_start();
 	<h3>Graphique de la popularité des events au cours du temps :</h3>
 	<div id="linechart_comparison" class="chartjs" data-chart="">
 		<canvas class="chartjs-render-monitor" style="font-family: 'Courier New'; font-weight: 400; line-height: 24px; border-width: 1px; display: block; width: 100%; height: 100%"></canvas>
-
+		
 		<script id="chartjs-script" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
 		
 	</div>
+	<!--
 		<form style="margin-top:15px;">
 			<label for="start">From :</label>
 			<input type="date" id="start_date" name="graph-start" style="width:140px; height: 27px" value="2020-02-11" min="2020-01-01" max="2030-01-01">
 			<label for="start">To :</label>
 			<input type="date" id="end_date" name="graph-end" style="width:140px; height: 27px" value="2020-03-20" min="2020-01-01" max="2030-01-01">
 		</form>
+		-->
 	</div>  
-	
 	
 	<script type="text/javascript">
 
@@ -123,7 +124,7 @@ session_start();
 			$popularityDate = ((dataSQL[$dayPop]['popularity_date']).toString().substring(0, 10));
 			$popularity = dataSQL[$dayPop]['number'];
 		
-			if (typeof eventList[$eventId] == 'undefined') {
+			if (typeof eventList[$eventId] == 'undefined'){
 				//insert html checkboxes
 				document.getElementById("checkbox-list").innerHTML += "<p><input name='"+dataSQL[$dayPop].event_id+"' class='checkbox-event' type='checkbox' />&nbsp;"+dataSQL[$dayPop].name+"<br /></p>";
 				//create element of list of event
@@ -158,10 +159,6 @@ session_start();
 					}
 				}
 				
-				if(eventList[$eventId].label == "Concours Top Achat"){
-				
-					console.log(dayCount + " " +$startDate + " " + eventList[$eventId].data);
-				}
 				eventList[$eventId].popularityDate.push(String($popularityDate));	
 			}
 			//add data of the day to eventList[eventID].data
@@ -186,9 +183,6 @@ session_start();
 		dataChart.type = 'line';
 		dataChart.data = {};
 		dataChart.data.labels = dateList;
-		for(var key in dataChart.data) {
-			console.log(key+ "truc :" + dataChart.data[key]);
-		}
 
 		console.log(dataChart);
 
@@ -289,7 +283,6 @@ session_start();
 						}
 					}
 				}
-				
 			}
 			console.log(dateList);
 			var dataChart = {};
