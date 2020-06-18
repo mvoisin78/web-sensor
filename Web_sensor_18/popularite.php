@@ -84,7 +84,7 @@ session_start();
 				  echo"<ul style=\"margin-top:10px;list-style-type:none\">         
 					<li>Nom : ".$terme_trouve['name']." </li>
 					<li>Popularité : ".$terme_trouve['total_popularity']."</li>
-					<li> Tweet Populaire :
+					<li>Tweet d'un utilisateur populaire :
 			<blockquote class=\"twitter-tweet\">
 			  <p lang=\"fr\" dir=\"ltr\">".$terme_trouve['tweet_text']."</p>&mdash; ".$terme_trouve['user_name']." (@".$terme_trouve['user'].")
 			  <a href=\"https://twitter.com/".$terme_trouve['user']."/status/".$terme_trouve['tweet_id']."\">".substr($terme_trouve['popularity_date'], 0, 10)."</a>
@@ -232,7 +232,6 @@ session_start();
 						});       
 					});
 				}
-				
 				createChart(dataChart);
 								
 			</script>

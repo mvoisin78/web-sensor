@@ -68,7 +68,8 @@ session_start();
 <!-- Content -->
 
 <div class="page">
-	<section class="main"> 
+	<section class="main">
+	<h1><center>Informations du 25 Février 2020</center></h2>
 	<div class="container-fluid">
 	<div class="container">	
 	<div class="row">
@@ -213,8 +214,7 @@ session_start();
 					}
 					$reponse_prediction2->closeCursor(); // Termine le traitement de la requête
 					echo("
-				</div>
-				
+				</div>	
 				<div class=\"col-md-6 col-lg-6\">");
 					try
 					{
@@ -232,10 +232,10 @@ session_start();
 					while ($donnees_prediction = $reponse_prediction->fetch()){
 						$valueGrow = (($donnees_prediction['pnumber'] - $donnees_prediction['number'])*100/ $donnees_prediction['number']);
 						if(intval($valueGrow) > 0){
-						echo("<ul><li>".$index." : ".$donnees_prediction['name']."   +".intval($valueGrow)."%</li></ul>");
+							echo("<ul><li>".$index." : ".$donnees_prediction['name']."&nbsp;<img alt='up' src='img/green.png' width='15' height='15'>&nbsp;+".intval($valueGrow)."%</li></ul>");
 						}
 						else{
-							echo("<ul><li>".$index." : ".$donnees_prediction['name']."   ".intval($valueGrow)."%</li></ul>");
+							echo("<ul><li>".$index." : ".$donnees_prediction['name']."&nbsp;<img alt='down' src='img/red.png' width='15' height='15'>&nbsp;".intval($valueGrow)."%</li></ul>");
 						}
 						$index = $index + 1;
 					}

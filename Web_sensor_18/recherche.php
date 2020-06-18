@@ -170,18 +170,18 @@ if (isset($_GET["s"]) AND $_GET["s"] == "Rechercher")
 	$_SESSION['recherche']= $terme;
 	$_SESSION['rechercheList']= [];
 	
-	foreach ($terme as $terme_trouve  ) {
+	foreach ($terme as $terme_trouve) {
 		$_SESSION['rechercheList'][$terme_trouve['name']]=$terme_trouve;
 		echo"<div class=\"informations-accueil\">";
 		echo "<div ><ul>
 			<li> <a href=\"popularite.php?nameevent=".$terme_trouve['name']."\">".$terme_trouve['name']. "</a></li></ul>
 			<li> Popularité : ".$terme_trouve['total_popularity']."</li>
-			<li> Tweet populaire : <blockquote class=\"twitter-tweet\" lang=\"fr\">
-  <p>".$terme_trouve['tweet_text']."</p>&mdash;
-  ".$terme_trouve['user_name']." <a href=\"https://twitter.com/".$terme_trouve['user']."/status/".$terme_trouve['tweet_id']."\" 
-  data-datetime=DATE>".$terme_trouve['popularity_date']."</a>
-</blockquote>
-</li>
+			<li> Tweet d'un utilisateur populaire : <blockquote class=\"twitter-tweet\" lang=\"fr\">
+		  <p>".$terme_trouve['tweet_text']."</p>&mdash;
+		  ".$terme_trouve['user_name']." <a href=\"https://twitter.com/".$terme_trouve['user']."/status/".$terme_trouve['tweet_id']."\" 
+		  data-datetime=DATE>".substr($terme_trouve['popularity_date'], 0, 10)."</a>
+		</blockquote>
+		</li>
 		</ul>
 		</div></div>";
   }
